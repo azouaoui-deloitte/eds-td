@@ -98,7 +98,21 @@ Modèle d'authoring : document `/nav` (sections : segments, logo, utilitaires av
 | Bannière d'urgence (`/api/ems-service`) | API TD | non migrée |
 | Analytics (Ensighten, Adobe DTM, GTM) | hors périmètre POC | non migrés |
 
-## 8. Critères d'acceptation
+## 8. Résultats (mesurés sur aem.live contre td.com)
+
+Mesure automatisée (`import-work/tools/measure.mjs`) de la position (x, y, largeur, hauteur) de 55 à 59 repères textuels (titres, paragraphes, boutons, liens du header et du footer) :
+
+| Viewport | Repères à ±3 px | Écart max |
+|---|---|---|
+| Desktop 1440 | 59 / 59 | 0 px |
+| Tablette 768 | 51 / 55 | 7 px (bas du footer, formulaire FAQ) |
+| Mobile 375 | 55 / 55 | 0 px |
+
+Captures comparatives côte à côte (pleine page et états ouverts) : `import-work/compare/`. Aucune erreur console, aucune ressource en erreur.
+
+Blocs livrés : `hero`, `login`, `cards` (icons, teaser, grey, illustration, white, horizontal, tiles, promo), `columns` (teaser, media), `banner`, `faq-search`, `header`, `footer`, `modal`. Contenu DA : page, `index`, `nav`, `footer`, 7 fragments `/fragments/nav/*`, `/modals/index-du-site`, 40 médias sous `/media/td/`.
+
+## 9. Critères d'acceptation
 
 1. Les 21 sections source sont présentes, dans l'ordre, sans texte tronqué.
 2. Header et footer identiques visuellement à 1440, 768 et 375 px, états ouverts compris (méga-menu, dropdowns, tiroir mobile niveaux 1 et 2, accordéons footer, modale index du site).
