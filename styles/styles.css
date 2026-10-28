@@ -280,6 +280,11 @@ main img {
   vertical-align: middle;
 }
 
+.icon img {
+  width: 100%;
+  height: 100%;
+}
+
 .icon[style*='--icon'] {
   background-color: currentcolor;
   mask: var(--icon) center / contain no-repeat;
@@ -287,11 +292,6 @@ main img {
 
 .icon[style*='--icon'] img {
   display: none;
-}
-
-.icon img {
-  width: 100%;
-  height: 100%;
 }
 
 .visually-hidden {
@@ -405,9 +405,29 @@ main > .section.spaced-bottom {
   padding-bottom: 30px;
 }
 
+@media (width >= 768px) {
+  main > .section.headline > .default-content-wrapper {
+    max-width: calc(var(--col) * 10);
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  main > .section.centered > .default-content-wrapper {
+    max-width: calc(var(--col) * 10);
+  }
+
+  main > .section:has(.cards.icons) > .default-content-wrapper {
+    max-width: calc(var(--col) * 8);
+  }
+}
+
 @media (width < 768px) {
   main > .section > .default-content-wrapper > p.button-wrapper .button {
     width: 100%;
+  }
+
+  main > .section.light-green {
+    padding-top: 55px;
   }
 
   main > .section.centered > .default-content-wrapper {

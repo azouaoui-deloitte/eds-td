@@ -67,7 +67,7 @@ main > .section > .faq-search-wrapper {
 }
 
 .faq-search-content > p {
-  margin-top: 19px;
+  margin-top: 25px;
   text-align: center;
 }
 
@@ -102,6 +102,7 @@ main > .section > .faq-search-wrapper {
   }
 
   .faq-search-content > p {
+    margin-top: 15px;
     text-align: left;
   }
 }

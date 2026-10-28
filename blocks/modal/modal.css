@@ -7,7 +7,7 @@ dialog.td-modal {
   box-sizing: border-box;
   width: min(970px, calc(100vw - 30px));
   max-width: none;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 150px);
   margin: auto;
   padding: 40px 45px;
   border: 0;
@@ -20,8 +20,8 @@ dialog.td-modal::backdrop {
 
 .td-modal .td-modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
   width: 30px;
   height: 30px;
   padding: 0;
@@ -32,8 +32,8 @@ dialog.td-modal::backdrop {
 }
 
 .td-modal .td-modal-close .icon {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 30px;
 }
 
 .td-modal .td-modal-content .section > div {

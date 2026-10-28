@@ -31,7 +31,11 @@ function create(tag, attrs = {}, ...children) {
 function icon(name) {
   const span = create('span', { class: `icon icon-${name}`, 'aria-hidden': 'true' });
   if (!name.startsWith('flag-')) span.style.setProperty('--icon', `url(${window.hlx.codeBasePath}/icons/${name}.svg)`);
-  else span.append(create('img', { src: `${window.hlx.codeBasePath}/icons/${name}.svg`, alt: '', width: 28, height: 16 }));
+  else {
+    span.append(create('img', {
+      src: `${window.hlx.codeBasePath}/icons/${name}.svg`, alt: '', width: 28, height: 16,
+    }));
+  }
   return span;
 }
 
@@ -132,7 +136,9 @@ function parseFlyout(fragment) {
     const ul = h3.nextElementSibling && h3.nextElementSibling.tagName === 'UL' ? h3.nextElementSibling : null;
     const links = ul ? [...normalizeList(ul).children].map((li) => {
       const a = li.querySelector('a');
-      return { text: a.textContent.trim(), href: a.href, icon: iconNameOf(a), action: !!li.querySelector('strong') };
+      return {
+        text: a.textContent.trim(), href: a.href, icon: iconNameOf(a), action: !!li.querySelector('strong'),
+      };
     }) : [];
     columns.push({ title: h3.textContent.trim(), links });
   });
@@ -159,7 +165,9 @@ function buildFlyoutColumns(columns, accordion) {
     let title;
     if (accordion) {
       const id = `nav-acc-${Math.random().toString(36).slice(2, 8)}`;
-      title = create('button', { type: 'button', class: 'nav-flyout-title', 'aria-expanded': i === 0 ? 'true' : 'false', 'aria-controls': id }, col.title, icon('down-caret'));
+      title = create('button', {
+        type: 'button', class: 'nav-flyout-title', 'aria-expanded': i === 0 ? 'true' : 'false', 'aria-controls': id,
+      }, col.title, icon('down-caret'));
       list.id = id;
       title.addEventListener('click', () => {
         title.setAttribute('aria-expanded', title.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
@@ -183,7 +191,9 @@ function buildDropdown(item, cls, { flags = false, labelPrefix = null } = {}) {
   const id = `nav-dd-${cls}`;
   const button = create(
     'button',
-    { type: 'button', class: 'nav-dropdown-button', 'aria-expanded': 'false', 'aria-controls': id },
+    {
+      type: 'button', class: 'nav-dropdown-button', 'aria-expanded': 'false', 'aria-controls': id,
+    },
     item.icon && cls !== 'start' ? icon(item.icon) : null,
     labelPrefix ? create('span', { class: 'nav-dropdown-prefix' }, labelPrefix) : null,
     create('span', { class: 'nav-dropdown-label' }, item.label),
@@ -200,7 +210,9 @@ function buildDropdown(item, cls, { flags = false, labelPrefix = null } = {}) {
 }
 
 function buildSearchForm(search, cls) {
-  const form = create('form', { class: cls, role: 'search', action: search.href, method: 'get' });
+  const form = create('form', {
+    class: cls, role: 'search', action: search.href, method: 'get',
+  });
   const input = create('input', {
     type: 'search', name: 'query', placeholder: search.label, 'aria-label': search.label, autocomplete: 'off',
   });
@@ -237,7 +249,9 @@ export default async function decorate(block) {
   const segments = create('div', { class: 'nav-segments' }, create('div', { class: 'nav-container' }, create('ul', {}, nav.segments.map((s) => create('li', { class: s.active ? 'active' : null }, create('a', { href: s.href, 'aria-current': s.active ? 'page' : null }, s.text))))));
 
   /* main bar */
-  const hamburger = create('button', { type: 'button', class: 'nav-hamburger', 'aria-expanded': 'false', 'aria-controls': 'nav-drawer' }, icon('hamburger'), create('span', { class: 'visually-hidden' }, LABELS.menu));
+  const hamburger = create('button', {
+    type: 'button', class: 'nav-hamburger', 'aria-expanded': 'false', 'aria-controls': 'nav-drawer',
+  }, icon('hamburger'), create('span', { class: 'visually-hidden' }, LABELS.menu));
   const brand = create('a', { class: 'nav-brand', href: nav.brand.href, 'aria-label': nav.brand.label });
   if (nav.brand.desktop) {
     const desktopLogo = nav.brand.desktop.cloneNode(true);
@@ -249,7 +263,9 @@ export default async function decorate(block) {
     brand.append(desktopLogo, mobileLogo);
   }
 
-  const searchButton = create('button', { type: 'button', class: 'nav-tool-button', 'aria-expanded': 'false', 'aria-controls': 'nav-search' }, icon(nav.search.icon || 'search'), create('span', { class: 'visually-hidden' }, nav.search.label));
+  const searchButton = create('button', {
+    type: 'button', class: 'nav-tool-button', 'aria-expanded': 'false', 'aria-controls': 'nav-search',
+  }, icon(nav.search.icon || 'search'), create('span', { class: 'visually-hidden' }, nav.search.label));
   const toolsList = create(
     'ul',
     { class: 'nav-tools-list' },
@@ -265,7 +281,9 @@ export default async function decorate(block) {
   searchForm.append(searchClose);
   const tools = create('div', { class: 'nav-tools' }, toolsList, searchForm);
 
-  const startMobile = create('button', { type: 'button', class: 'nav-start-mobile', 'aria-expanded': 'false', 'aria-controls': 'nav-login-drawer' }, icon(nav.start.icon || 'avatar'), create('span', {}, nav.start.label));
+  const startMobile = create('button', {
+    type: 'button', class: 'nav-start-mobile', 'aria-expanded': 'false', 'aria-controls': 'nav-login-drawer',
+  }, icon(nav.start.icon || 'avatar'), create('span', {}, nav.start.label));
 
   const bar = create('div', { class: 'nav-bar' }, create('div', { class: 'nav-container' }, hamburger, brand, tools, startMobile));
 
@@ -273,7 +291,9 @@ export default async function decorate(block) {
   const tabsList = create('ul', { class: 'nav-tabs' });
   nav.tabs.forEach((tab, i) => {
     const id = `nav-flyout-${i}`;
-    const button = create('button', { type: 'button', class: 'nav-tab-button', 'aria-expanded': 'false', 'aria-controls': id }, create('span', {}, tab.label), create('span', { class: 'nav-caret', 'aria-hidden': 'true' }));
+    const button = create('button', {
+      type: 'button', class: 'nav-tab-button', 'aria-expanded': 'false', 'aria-controls': id,
+    }, create('span', {}, tab.label), create('span', { class: 'nav-caret', 'aria-hidden': 'true' }));
     const close = create('button', { type: 'button', class: 'nav-flyout-close' }, create('span', {}, LABELS.close), icon('close'));
     const flyout = create('div', { class: 'nav-flyout', id, hidden: true }, close, create('div', { class: 'nav-flyout-body' }));
     tabsList.append(create('li', { class: 'nav-tab' }, button, flyout));
@@ -290,7 +310,9 @@ export default async function decorate(block) {
   const segmentAccordion = create(
     'div',
     { class: 'nav-drawer-segment' },
-    create('button', { type: 'button', class: 'nav-accordion-button', 'aria-expanded': 'false', 'aria-controls': 'nav-drawer-segments' }, `${LABELS.segment} `, create('strong', {}, activeSegment.text), icon('down-caret')),
+    create('button', {
+      type: 'button', class: 'nav-accordion-button', 'aria-expanded': 'false', 'aria-controls': 'nav-drawer-segments',
+    }, `${LABELS.segment} `, create('strong', {}, activeSegment.text), icon('down-caret')),
     create('ul', { id: 'nav-drawer-segments', class: 'nav-accordion-panel' }, nav.segments.map((s) => create('li', {}, create('a', { href: s.href, 'aria-current': s.active ? 'page' : null }, s.text)))),
   );
   const drawerTabs = create('ul', { class: 'nav-drawer-tabs' }, nav.tabs.map((tab, i) => create('li', {}, create('button', { type: 'button', class: 'nav-drawer-tab', 'data-index': i }, tab.icon ? icon(tab.icon) : null, create('span', {}, tab.label), icon('right-caret')))));
@@ -299,13 +321,18 @@ export default async function decorate(block) {
     'div',
     { class: 'nav-drawer-utility' },
     create('ul', { class: 'nav-drawer-icons' }, nav.links.map((l) => create('li', {}, create('a', { href: l.href }, icon(l.icon), create('span', {}, l.label))))),
-    [[nav.country, LABELS.country, true], [nav.language, LABELS.language, false]].map(([item, prefix, flags], i) => {
+    [
+      [nav.country, LABELS.country, true],
+      [nav.language, LABELS.language, false],
+    ].map(([item, prefix, flags], i) => {
       const id = `nav-drawer-acc-${i}`;
       const active = item.items.find((x) => x.active);
       return create(
         'div',
         { class: 'nav-drawer-accordion' },
-        create('button', { type: 'button', class: 'nav-accordion-button', 'aria-expanded': 'false', 'aria-controls': id }, `${prefix} `, create('strong', {}, active ? active.text : item.label), icon('down-caret')),
+        create('button', {
+          type: 'button', class: 'nav-accordion-button', 'aria-expanded': 'false', 'aria-controls': id,
+        }, `${prefix} `, create('strong', {}, active ? active.text : item.label), icon('down-caret')),
         create('ul', { id, class: 'nav-accordion-panel' }, item.items.map((x) => create('li', {}, create('a', { href: x.href, class: x.active ? 'active' : null }, flags && x.icon ? icon(x.icon) : null, x.text)))),
       );
     }),
@@ -337,7 +364,9 @@ export default async function decorate(block) {
 
   const loadFlyout = async (i) => {
     if (!flyoutData.has(i)) {
-      flyoutData.set(i, loadFragment(nav.tabs[i].path).then((frag) => (frag ? parseFlyout(frag) : { columns: [], promos: null })));
+      const empty = { columns: [], promos: null };
+      const pending = loadFragment(nav.tabs[i].path);
+      flyoutData.set(i, pending.then((frag) => (frag ? parseFlyout(frag) : empty)));
     }
     return flyoutData.get(i);
   };

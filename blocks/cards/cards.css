@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cards > ul {
   display: grid;
   margin: 0;
@@ -30,11 +31,12 @@
 }
 
 @media (width < 768px) {
-  .cards.mobile-carousel > ul {
+  .cards.mobile-carousel.mobile-carousel > ul {
     grid-auto-flow: column;
     grid-auto-columns: 100%;
     grid-template-columns: none;
-    margin: 0 calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -45,13 +47,23 @@
   }
 
   .cards.mobile-carousel > ul > li {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
   .cards.mobile-carousel .cards-dots {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 15px 0;
+    height: 23px;
+    margin: 25px 0 15px;
+  }
+
+  .cards.grey.mobile-carousel .cards-dots {
+    margin-top: 45px;
+  }
+
+  .cards.illustration.mobile-carousel .cards-dots {
+    margin-top: 40px;
   }
 
   .cards .cards-dots button {
@@ -73,7 +85,7 @@
 /* icons: product links with a round icon */
 .cards.icons > ul {
   grid-template-columns: 1fr;
-  margin-top: 20px;
+  margin: 20px 0 30px;
 }
 
 .section > .cards-wrapper:has(.cards.icons) {
@@ -91,6 +103,7 @@
 }
 
 .cards.icons .cards-card-icon a {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,6 +125,7 @@
 }
 
 .cards.icons .cards-card-body {
+  max-width: 216px;
   padding-top: 5px;
 }
 
@@ -125,8 +139,9 @@
 
 @media (width >= 768px) {
   .cards.icons > ul {
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 calc(-1 * var(--gutter));
+    grid-template-columns: repeat(2, 47.15%);
+    column-gap: 2.17%;
+    margin: 0 0 30px;
   }
 
   .cards.icons > ul > li {
@@ -194,22 +209,23 @@
 /* teaser: image, title, description and outlined button on pale green */
 .cards.teaser > ul {
   margin: 0;
-  padding: 15px 0;
+  padding: 0;
 }
 
 .cards.teaser > ul > li {
   grid-template-rows: auto auto auto auto;
-  margin-bottom: 30px;
-  padding: 0 15px 30px;
+  margin-bottom: 20px;
+  padding: 0 29px 30px;
   background-color: var(--td-paler-green);
 }
 
-.cards.teaser .cards-card-body > p:first-child {
-  text-wrap: balance;
+.cards.teaser .cards-card-image img {
+  height: 137px;
+  object-fit: cover;
 }
 
 .cards.teaser .cards-card-image {
-  margin: 0 -15px;
+  margin: 0 -29px;
 }
 
 .cards.teaser .cards-card-body > p:first-child {
@@ -217,6 +233,7 @@
   font-family: var(--medium-font-family);
   font-size: 18px;
   line-height: 28px;
+  text-wrap: balance;
 }
 
 .cards.teaser .cards-card-body > p:nth-child(2) {
@@ -245,6 +262,10 @@
   .cards.teaser .cards-card-image {
     margin: 0 -12px;
   }
+
+  .cards.teaser .cards-card-image img {
+    height: 141px;
+  }
 }
 
 @media (width >= 1024px) {
@@ -260,10 +281,15 @@
   .cards.teaser .cards-card-image {
     margin: 0 -15px;
   }
+
+  .cards.teaser .cards-card-image img {
+    height: auto;
+  }
 }
 
 /* white: text cards with a link action */
 .cards.white > ul > li {
+  grid-row: span 3;
   grid-template-rows: auto auto auto;
   margin-bottom: 20px;
   padding: 15px 29px 30px;
@@ -271,18 +297,20 @@
   text-align: left;
 }
 
-.cards.white > ul > li {
-  grid-row: span 3;
-}
-
 .cards.white .cards-card-body > p:nth-child(2) {
   margin-top: 20px;
 }
 
 .cards.white .cards-card-body > p:last-child {
-  margin-top: 28px;
+  margin-top: 20px;
   text-align: center;
   align-self: end;
+}
+
+@media (width >= 768px) {
+  .cards.white .cards-card-body > p:last-child {
+    margin-top: 28px;
+  }
 }
 
 .cards.white .cards-card-body a.link-action {
@@ -320,7 +348,7 @@
 .cards.grey > ul > li {
   grid-template-rows: auto auto auto;
   grid-row: span 3;
-  padding: 20px 15px;
+  padding: 30px 16px;
   background-color: var(--td-grey-bg);
 }
 
@@ -338,10 +366,6 @@
   .cards.grey.mobile-carousel > ul > li {
     margin: 0 var(--gutter);
   }
-
-  .cards.grey.mobile-carousel > ul {
-    grid-auto-columns: calc(100% - 0px);
-  }
 }
 
 @media (width >= 768px) {
@@ -356,11 +380,14 @@
   }
 }
 
+.cards.grey > ul {
+  margin-bottom: 30px;
+}
+
 @media (width >= 1024px) {
   .cards.grey > ul {
     grid-template-columns: repeat(2, 470px);
     justify-content: center;
-    margin-bottom: 30px;
   }
 
   .cards.grey > ul > li {
@@ -392,7 +419,13 @@
 }
 
 .cards.illustration .cards-card-body > p:nth-child(2) {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+@media (width >= 768px) {
+  .cards.illustration .cards-card-body > p:nth-child(2) {
+    margin-top: 20px;
+  }
 }
 
 .cards.illustration .cards-card-body > p.button-wrapper {
@@ -458,6 +491,10 @@
   background-color: #fff;
 }
 
+.cards.horizontal > ul > li:last-child {
+  margin-bottom: 0;
+}
+
 .cards.horizontal .cards-card-image {
   align-self: center;
   width: 158px;
@@ -477,10 +514,45 @@
 
   .cards.horizontal > ul > li {
     margin-bottom: 0;
+    padding: 30px;
   }
 
   .cards.horizontal .cards-card-image {
     width: 160px;
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .cards.horizontal > ul > li {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+  }
+
+  .cards.horizontal .cards-card-image {
+    justify-self: center;
+    margin-bottom: 31px;
+  }
+
+  .cards.horizontal .cards-card-body {
+    display: contents;
+  }
+
+  .cards.horizontal .cards-card-body > * {
+    margin: 0;
+  }
+
+  .cards.horizontal .cards-card-body h3 + p {
+    margin-top: 20px;
+  }
+
+  .cards.horizontal .cards-card-body > p.button-wrapper {
+    margin-top: 20px;
+    place-self: end center;
+  }
+
+  .cards.horizontal .cards-card-body .button {
+    width: 226px;
   }
 }
 
@@ -525,7 +597,7 @@
 }
 
 .cards.tiles .cards-card-body {
-  padding: 25px 15px 0;
+  padding: 25px 15px 20px;
   background-color: #fff;
 }
 
@@ -550,7 +622,7 @@
 
 @media (width >= 768px) {
   .cards.tiles > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin: 0 calc(-1 * var(--gutter));
   }
 
@@ -564,11 +636,6 @@
   }
 }
 
-@media (width >= 1024px) {
-  .cards.tiles > ul {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
 
 /* promo: header mega-menu promotions */
 .cards.promo > ul {
