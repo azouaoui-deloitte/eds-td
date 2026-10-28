@@ -31,6 +31,8 @@ Les fragments globaux sont rangés sous le dossier de langue `/ca/fr/`, comme le
 | `/fragments/nav/conseils` | `/ca/fr/fragments/nav/conseils` | panneau Conseils |
 | `/modals/index-du-site` | `/ca/fr/modals/index-du-site` | modale « Index du site » (footer) |
 | — | `/ca/fr/modals/mentions-juridiques/<page>` | modales « Mentions juridiques » des pages L1 |
+| — | `/ca/fr/modals/info-bulles/<page>-<sujet>` | info-bulles (popovers) de la page Prêts hypothécaires |
+| — | `/ca/fr/modals/province/cartes-de-credit` | choix de la province (Cartes de crédit) |
 
 Le header lit la métadonnée `nav`, le footer la métadonnée `footer` (repli codé : `/ca/fr/nav`, `/ca/fr/footer`, utilisé
 par la page 404). Les onglets du document nav pointent vers `/ca/fr/fragments/nav/<onglet>` ; tout lien contenant
@@ -56,4 +58,6 @@ Dans DA, une page et un dossier de même nom coexistent (`services-bancaires-per
 ## Liens
 
 Les liens vers une page migrée sont relatifs (`/ca/fr/...`) partout : pages, nav, panneaux du méga-menu, footer, index
-du site. Les liens vers les pages non migrées restent absolus (`https://www.td.com/...`).
+du site. Les liens vers les pages non migrées restent absolus (`https://www.td.com/...`). Seule exception volontaire :
+dans la modale de province de Cartes de crédit, les provinces autres que le Québec pointent vers td.com (contenu
+provincial servi par TD).

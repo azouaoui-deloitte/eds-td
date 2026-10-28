@@ -108,9 +108,11 @@ Mesure automatisée (`import-work/tools/measure.mjs`) de la position (x, y, larg
 | Tablette 768 | 51 / 55 | 7 px (bas du footer, formulaire FAQ) |
 | Mobile 375 | 55 / 55 | 0 px |
 
+Mesure générique ultérieure (`measure-page.mjs`, toutes les sondes du `<main>`, après la migration des pages L1) : desktop 105/105, tablette 96/97, mobile 97/97 — voir [pages-l1.md](pages-l1.md).
+
 Captures comparatives côte à côte (pleine page et états ouverts) : `import-work/compare/`. Aucune erreur console, aucune ressource en erreur.
 
-Blocs livrés : `hero`, `login`, `cards` (icons, teaser, grey, illustration, white, horizontal, tiles, promo), `columns` (teaser, media), `banner`, `faq-search`, `header`, `footer`, `modal`. Contenu DA : page, `index`, `nav`, `footer`, 7 fragments `/fragments/nav/*`, `/modals/index-du-site`, 40 médias sous `/media/td/`.
+Blocs livrés : `hero`, `login`, `cards` (icons, teaser, grey, illustration, white, horizontal, tiles, promo), `columns` (teaser, media), `banner`, `faq-search`, `header`, `footer`, `modal`. Contenu DA (réorganisé, voir [structure-contenu.md](structure-contenu.md)) : page, `/ca/fr/nav`, `/ca/fr/footer`, 7 fragments `/ca/fr/fragments/nav/*`, `/ca/fr/modals/index-du-site`, 40 médias sous `/media/td/` ; `/` redirige vers la page (sheet `redirects`).
 
 ## 9. Critères d'acceptation
 
