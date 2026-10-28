@@ -103,3 +103,79 @@ main > .section > .floating-cta-wrapper {
     grid-column: 6 / span 3;
   }
 }
+
+/* wide: full-viewport 12-column grid, text cols 4-6 (right-aligned), button cols 7-9, mobile 2-11 (TD prêts hypothécaires) */
+.floating-cta.wide .floating-cta-inner {
+  max-width: none;
+}
+
+.floating-cta.wide .floating-cta-action {
+  grid-column: 2 / span 10;
+}
+
+/* offset: text cols 3-5 (right-aligned), button cols 6-9, mobile 3-10 (TD placements personnels) */
+.floating-cta.offset .floating-cta-action {
+  grid-column: 3 / span 8;
+}
+
+@media (width >= 768px) {
+  .floating-cta.wide .floating-cta-text p,
+  .floating-cta.offset .floating-cta-text p {
+    text-align: right;
+  }
+
+  .floating-cta.wide .floating-cta-text {
+    grid-column: 4 / span 3;
+  }
+
+  .floating-cta.wide .floating-cta-action {
+    grid-column: 7 / span 3;
+  }
+
+  .floating-cta.offset .floating-cta-text {
+    grid-column: 3 / span 3;
+  }
+
+  .floating-cta.offset .floating-cta-action {
+    grid-column: 6 / span 4;
+  }
+}
+
+/* half: text ends and button starts at the middle of the bar; mobile full width (TD prêts et lignes de crédit) */
+.floating-cta.half .floating-cta-action {
+  grid-column: 1 / span 12;
+}
+
+@media (width >= 768px) {
+  .floating-cta.half .floating-cta-text {
+    grid-column: 4 / span 3;
+  }
+
+  .floating-cta.half .floating-cta-action {
+    grid-column: 7 / span 4;
+  }
+}
+
+@media (width >= 1024px) {
+  .floating-cta.half .floating-cta-text {
+    grid-column: 5 / span 2;
+  }
+
+  .floating-cta.half .floating-cta-action {
+    grid-column: 7 / span 3;
+  }
+}
+
+@media (width >= 1200px) {
+  .floating-cta.half .floating-cta-inner {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .floating-cta.half .floating-cta-text {
+    grid-column: 4 / span 2;
+  }
+
+  .floating-cta.half .floating-cta-action {
+    grid-column: 6 / span 3;
+  }
+}

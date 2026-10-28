@@ -408,3 +408,17 @@ main > .section > .columns-wrapper:has(.columns.link-right) {
     padding-top: 66px;
   }
 }
+
+@media (width < 768px) {
+  .columns.teaser .columns-text-col p.button-wrapper {
+    margin-top: 25px;
+    margin-bottom: 30px;
+  }
+}
+
+/* media pad-mobile: 30px above the image on mobile (TD prets-et-lignes-de-credit "Conseils pour emprunter") */
+@media (width < 768px) {
+  .columns.media.pad-mobile {
+    padding-top: 30px;
+  }
+}

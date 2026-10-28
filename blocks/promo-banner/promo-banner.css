@@ -325,3 +325,8 @@ main > .section > .promo-banner-wrapper {
     margin-top: 20px;
   }
 }
+
+/* title-tight: TD heading letter-spacing (-0.5px) kept on the banner title (placements, prêts hypothécaires) */
+.promo-banner.title-tight .promo-banner-text > :is(h1, h2, h3) {
+  letter-spacing: -0.5px;
+}

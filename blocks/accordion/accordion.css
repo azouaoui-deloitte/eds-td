@@ -104,3 +104,16 @@ main > .section > .accordion-wrapper + .default-content-wrapper {
     margin-left: calc(100% * 2 / 12 + var(--gutter));
   }
 }
+
+/* compact: 10px between the heading and the first question, no rule after the last one, 30px below (TD placements FAQ) */
+main > .section > .accordion-wrapper:has(> .accordion.compact) {
+  margin-top: 10px;
+}
+
+.accordion.compact {
+  padding-bottom: 30px;
+}
+
+.accordion.compact .accordion-item:last-child::after {
+  display: none;
+}

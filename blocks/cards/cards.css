@@ -138,6 +138,12 @@
 }
 
 @media (width >= 768px) {
+  .cards.icons .cards-card-body a.link-action::after {
+    margin-right: calc(-0.7em - 4px);
+  }
+}
+
+@media (width >= 768px) {
   .cards.icons > ul {
     grid-template-columns: repeat(2, 47.15%);
     column-gap: 2.17%;
@@ -160,6 +166,7 @@
 @media (width >= 1024px) {
   .cards.icons > ul {
     grid-template-columns: repeat(3, 1fr);
+    column-gap: 0;
     margin: 0 calc(-1 * var(--gutter)) 30px;
   }
 
@@ -611,6 +618,7 @@
   width: 0.7em;
   height: 0.7em;
   margin-left: 4px;
+  margin-right: calc(-0.7em - 4px);
   vertical-align: middle;
   background-color: currentcolor;
   mask: url('../../icons/right-caret.svg') center / contain no-repeat;
@@ -627,6 +635,7 @@
   }
 
   .cards.tiles .cards-card-body {
+    box-sizing: border-box;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -929,6 +938,10 @@
     border-bottom: 0;
   }
 
+  .cards.divided:not(.inset) > ul > li:has(.button-wrapper) {
+    padding-bottom: 32px;
+  }
+
   .cards.divided.inset > ul > li {
     padding-bottom: 15px;
   }
@@ -1108,8 +1121,20 @@
     padding-bottom: 0;
   }
 
+  .cards.illustration.stacked > ul > li:last-child .cards-card-body > p.button-wrapper {
+    margin-top: 35px;
+  }
+
+  .cards.illustration.stacked > ul > li:last-child:has(p.button-wrapper) {
+    padding-bottom: 0;
+  }
+
   .cards.illustration.stacked > ul > li:last-child {
     padding-bottom: 15px;
+  }
+
+  .cards.illustration.stacked.phone > ul > li:last-child {
+    padding-bottom: 8px;
   }
 }
 
@@ -1326,13 +1351,14 @@ main > .section > .cards-wrapper:has(.cards.illustration) + .default-content-wra
 @media (width >= 768px) {
   .cards.divided.text-left > ul > li {
     padding-top: 30px;
-    padding-bottom: 22px;
+    padding-bottom: 45px;
   }
 }
 
-@media (width >= 1024px) {
+@media (width >= 768px) and (width < 1024px) {
   .cards.divided.text-left > ul > li {
-    padding-bottom: 45px;
+    padding-right: 26px;
+    padding-left: 26px;
   }
 }
 
@@ -1464,5 +1490,84 @@ main > .section > .cards-wrapper:has(.cards.illustration) + .default-content-wra
     display: flex;
     flex-direction: column;
     grid-row: auto;
+  }
+}
+
+/* features cta / left (cartes-de-credit, prets-et-lignes-de-credit): 15px card padding;
+   cta = full-width button 20px under the text; left = left-aligned title and text */
+.cards.features.cta > ul > li,
+.cards.features.left > ul > li {
+  padding-right: var(--gutter);
+  padding-left: var(--gutter);
+}
+
+.cards.features.cta .cards-card-body > p.button-wrapper {
+  place-self: stretch stretch;
+  margin-top: 20px;
+}
+
+.cards.features.cta .cards-card-body > p.button-wrapper .button {
+  width: 100%;
+}
+
+.cards.features.left .cards-card-body > * {
+  place-self: stretch stretch;
+  text-align: left;
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .cards.features.left .cards-card-body > h3 {
+    width: calc(100% * 8 / 12);
+  }
+}
+
+/* illustration ruled: vertical rule between cards; phone: phone number heading in the button row
+   (TD show-grid-lines teaser with cta-phone-number, prets-et-lignes-de-credit "Nous joindre") */
+.cards.illustration.phone .cards-card-body > h3:last-child {
+  margin-top: 20px;
+}
+
+.cards.illustration.phone .cards-card-body > h3:last-child a::after {
+  content: none;
+}
+
+@media (width >= 768px) {
+  .cards.illustration.ruled > ul > li + li {
+    position: relative;
+  }
+
+  .cards.illustration.ruled > ul > li + li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -15px;
+    width: 1px;
+    background-color: var(--td-rule);
+  }
+
+  .cards.illustration.phone .cards-card-body > h3:last-child {
+    padding-top: 8px;
+  }
+
+  .cards.illustration.phone .cards-card-body > h3:last-child a:any-link {
+    color: var(--text-color);
+  }
+}
+
+/* features left: TD tools grid sits right under its heading on mobile, 16px below it from 768px */
+main > .section > .default-content-wrapper + .cards-wrapper:has(> .cards.features.left) {
+  margin-top: 0;
+}
+
+@media (width >= 768px) {
+  main > .section > .default-content-wrapper + .cards-wrapper:has(> .cards.features.left) {
+    margin-top: 16px;
+  }
+}
+
+@media (width < 768px) {
+  .cards.features.left.stacked > ul {
+    margin-bottom: -16px;
   }
 }

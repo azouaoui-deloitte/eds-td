@@ -190,3 +190,306 @@
     width: 232px;
   }
 }
+
+/* credit: TD credit-card compare cards (cartes-de-credit) — 170x107 card art, centred feature lines */
+.compare-cards.credit .compare-cards-title a::after {
+  margin-right: -10px;
+}
+
+.compare-cards.credit .compare-cards-image {
+  padding-bottom: 34px;
+}
+
+.compare-cards.credit .compare-cards-image img {
+  width: 42%;
+  height: auto;
+  object-fit: initial;
+}
+
+.compare-cards.credit .compare-cards-features {
+  padding: 0 var(--gutter);
+}
+
+.compare-cards.credit .compare-cards-actions::before {
+  margin-top: 23px;
+}
+
+/* TD renders these lines as inline paragraphs: text starts at the top of the line box */
+.compare-cards.credit .compare-cards-features ul {
+  position: relative;
+  top: -4px;
+}
+
+.compare-cards.credit sup {
+  position: relative;
+  top: -5px;
+  vertical-align: baseline;
+}
+
+@media (width < 768px) {
+  .compare-cards.credit > ul > li {
+    padding-bottom: 29px;
+  }
+}
+
+@media (width >= 1024px) {
+  .compare-cards.credit .compare-cards-image img {
+    width: 42.5%;
+  }
+}
+
+/* "Comparer" checkbox (cards with a drawer settings row) */
+.compare-cards .compare-cards-check {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 15px;
+  margin-top: 23px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.compare-cards .compare-cards-check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.compare-cards .compare-cards-check-box {
+  box-sizing: border-box;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--td-green);
+  background-color: var(--background-color);
+}
+
+.compare-cards .compare-cards-check input:checked + .compare-cards-check-box {
+  background-color: var(--td-green);
+}
+
+.compare-cards .compare-cards-check input:checked + .compare-cards-check-box::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.compare-cards .compare-cards-check input:focus-visible + .compare-cards-check-box {
+  outline: 2px dotted var(--td-focus);
+  outline-offset: 2px;
+}
+
+.compare-cards .compare-cards-check input:disabled ~ span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* sticky compare drawer (TD cmp-compare-sticky-drawer) */
+.compare-cards .compare-drawer {
+  position: fixed;
+  z-index: 90;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.compare-cards .compare-drawer[hidden] {
+  display: none;
+}
+
+.compare-cards .compare-drawer-inner {
+  box-sizing: border-box;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.compare-cards .compare-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 1px;
+  border: 1px solid var(--td-green);
+  background-color: var(--td-green);
+}
+
+.compare-cards .compare-drawer-toggle {
+  position: relative;
+  padding: 14px 0 14px 24px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 15px;
+  line-height: 23px;
+  cursor: pointer;
+}
+
+.compare-cards .compare-drawer-toggle::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: currentcolor;
+  mask: url('../../icons/up-caret.svg') center / contain no-repeat;
+  transform: rotate(180deg);
+}
+
+.compare-cards .compare-drawer.collapsed .compare-drawer-toggle::before {
+  transform: none;
+}
+
+.compare-cards .compare-drawer-clear {
+  padding: 4px 12px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-family: var(--medium-font-family);
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.compare-cards .compare-drawer-clear:hover {
+  background-color: var(--td-green-hover);
+}
+
+.compare-cards .compare-drawer-body {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  max-height: 60vh;
+  border: 1px solid var(--td-rule);
+  border-top: 0;
+  background-color: var(--td-grey-bg);
+  overflow: auto;
+}
+
+.compare-cards .compare-drawer.collapsed .compare-drawer-body {
+  display: none;
+}
+
+.compare-cards .compare-drawer-col {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 15px 15px;
+  border-right: 1px solid var(--td-rule);
+}
+
+.compare-cards .compare-drawer-col:last-child {
+  border-right: 0;
+}
+
+.compare-cards .compare-drawer-offer {
+  align-self: stretch;
+  min-height: 26px;
+  margin: 0 -15px 10px;
+  text-align: left;
+}
+
+.compare-cards .compare-drawer h3 {
+  min-height: 56px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+  text-wrap: balance;
+}
+
+.compare-cards .compare-drawer-add h3 a:any-link {
+  color: var(--text-color);
+}
+
+.compare-cards .compare-drawer-media {
+  position: relative;
+  margin-top: 30px;
+  line-height: 0;
+}
+
+.compare-cards .compare-drawer-media img {
+  width: 112px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.compare-cards .compare-drawer-remove {
+  position: absolute;
+  top: -20px;
+  right: -26px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--td-green);
+  border-radius: 50%;
+  background-color: var(--td-green);
+  cursor: pointer;
+}
+
+.compare-cards .compare-drawer-remove::before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  background-color: #fff;
+  mask: url('../../icons/close.svg') center / contain no-repeat;
+}
+
+.compare-cards .compare-drawer-plus {
+  position: relative;
+  box-sizing: border-box;
+  width: 112px;
+  height: 71px;
+  margin-top: 30px;
+  border: 1px solid var(--td-green);
+}
+
+.compare-cards .compare-drawer-plus::before,
+.compare-cards .compare-drawer-plus::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background-color: var(--td-green);
+  transform: translate(-50%, -50%);
+}
+
+.compare-cards .compare-drawer-plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.compare-cards .compare-drawer-action {
+  justify-content: center;
+}
+
+.compare-cards .compare-drawer-action .button {
+  width: 100%;
+  max-width: 192px;
+}
+
+.compare-cards .compare-drawer-action .button.disabled {
+  border-color: var(--td-rule);
+  background-color: var(--td-grey-bg);
+  color: var(--td-rule);
+  cursor: default;
+}
+
+@media (width >= 768px) {
+  .compare-cards .compare-drawer-inner {
+    padding: 0 var(--gutter);
+  }
+
+  .compare-cards .compare-drawer-clear {
+    padding: 4px 40px;
+  }
+}

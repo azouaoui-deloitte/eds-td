@@ -50,6 +50,22 @@ function buildDots(block, ul) {
   block.prepend(nav);
 }
 
+/** Overlaid tile titles and captions share the height of the tallest one (TD tiles from 768px). */
+function equalizeTileBodies(ul) {
+  const desktop = window.matchMedia('(width >= 768px)');
+  const equalize = (els) => {
+    els.forEach((el) => { el.style.minHeight = ''; });
+    if (!desktop.matches) return;
+    const max = Math.max(...els.map((el) => el.offsetHeight));
+    els.forEach((el) => { el.style.minHeight = `${max}px`; });
+  };
+  const update = () => {
+    equalize([...ul.querySelectorAll('.cards-card-body > h3')]);
+    equalize([...ul.querySelectorAll('.cards-card-body')]);
+  };
+  new ResizeObserver(update).observe(ul);
+}
+
 export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -67,6 +83,7 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimized);
   });
   block.replaceChildren(ul);
+  if (block.classList.contains('tiles')) equalizeTileBodies(ul);
   if (MOBILE_CAROUSEL_VARIANTS.some((v) => block.classList.contains(v))
     && !block.classList.contains('stacked') && ul.children.length > 1) {
     block.classList.add('mobile-carousel');

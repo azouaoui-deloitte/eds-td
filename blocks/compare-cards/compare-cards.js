@@ -16,7 +16,9 @@ function part(name) {
  */
 export default function decorate(block) {
   const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
+  const rows = [...block.children];
+  const settings = rows.filter((row) => !row.querySelector('h1, h2, h3, h4, h5, h6'));
+  rows.filter((row) => !settings.includes(row)).forEach((row) => {
     const li = document.createElement('li');
     const parts = Object.fromEntries(PARTS.map((name) => [name, part(name)]));
     const elements = [...row.querySelectorAll(':scope > div > *')];
@@ -45,6 +47,11 @@ export default function decorate(block) {
     ul.append(li);
   });
   block.replaceChildren(ul);
+
+  // a row without heading configures the "Comparer" checkboxes and sticky drawer
+  if (settings.length) {
+    import('./compare-drawer.js').then(({ default: initDrawer }) => initDrawer(block, settings[0]));
+  }
 
   // TD sizes the tablet feature lists with the single-column content width (345px)
   const tablet = window.matchMedia('(width >= 768px) and (width < 1024px)');

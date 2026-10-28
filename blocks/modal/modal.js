@@ -1,7 +1,17 @@
 import { loadFragment } from '../fragment/fragment.js';
 import { loadCSS } from '../../scripts/aem.js';
 
-const toId = (text) => `renvoi-${text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+/**
+ * Disclaimer anchor: `renvoi-<sup text>` (alphanumerics), or the hexadecimal code points of a
+ * symbol-only sup (`^` → `renvoi-u5e`, `†` → `renvoi-u2020`) so symbol footnotes stay distinct.
+ * @param {string} text sup text
+ * @returns {string}
+ */
+const toId = (text) => {
+  const sup = text.trim();
+  const slug = sup.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `renvoi-${slug || [...sup].map((c) => `u${c.codePointAt(0).toString(16)}`).join('-')}`;
+};
 
 /**
  * Groups disclaimers: a paragraph starting with a <sup> opens a new `div.disclaimer#renvoi-<sup>`
