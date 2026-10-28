@@ -1,37 +1,170 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
+/* section wrapping the hero and the login panel */
+main > .section.hero-login {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--td-paler-green);
+  border-bottom: 2px solid var(--td-rule);
+  overflow: hidden;
+}
+
+main > .section.hero-login > .hero-wrapper {
+  position: static;
+  width: 100%;
+  max-width: none;
   padding: 0;
 }
 
 .hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 140px;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
+.hero .hero-background {
   position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  inset: 0 0 auto;
+  height: 260px;
+  overflow: hidden;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
+.hero .hero-background picture {
+  display: block;
   height: 100%;
 }
 
-@media (width >= 900px) {
+.hero .hero-background img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.hero .hero-square {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 240px;
+  height: 240px;
+  padding: 15px;
+  background-color: var(--td-green);
+}
+
+.hero .hero-square p {
+  font-family: var(--medium-font-family);
+  font-size: 38px;
+  line-height: 41px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.hero .hero-body {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 25px var(--gutter) 20px;
+}
+
+.hero .hero-body p.button-wrapper {
+  margin-top: 20px;
+}
+
+.hero .hero-body .button {
+  width: 100%;
+}
+
+@media (width >= 768px) {
+  main > .section.hero-login {
+    flex-direction: row;
+    justify-content: center;
+    min-height: 360px;
+    background-color: transparent;
+  }
+
   .hero {
-    padding: 40px 32px;
+    flex-direction: row;
+    min-height: 360px;
+    padding-top: 0;
+  }
+
+  .hero .hero-background {
+    inset: 0;
+    height: auto;
+  }
+
+  .hero .hero-background img {
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .hero .hero-square {
+    flex: 0 0 240px;
+    margin: 0 15px 0 41.6667%;
+  }
+
+  .hero .hero-body {
+    width: auto;
+    padding: 0 15px;
+  }
+
+  .hero .hero-body .button {
+    width: auto;
+    min-width: 162px;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.hero-login {
+    min-height: 415px;
+  }
+
+  main > .section.hero-login > .hero-wrapper {
+    flex: 0 0 calc(min(100%, var(--container-width)) * 0.75);
+    margin: 0;
+  }
+
+  .hero {
+    height: 100%;
+    min-height: 415px;
+  }
+
+  .hero .hero-background img {
+    left: 50%;
+    width: auto;
+    height: 380px;
+    transform: translateX(-50%);
+  }
+
+  .hero .hero-square {
+    margin: 0 30px 0 calc(22.2222% + 55px);
+  }
+
+  .hero .hero-body {
+    flex: 0 0 300px;
+    box-sizing: border-box;
+    padding: 0 30px 0 0;
+  }
+
+  .hero .hero-body p.button-wrapper {
+    margin-top: 20px;
+  }
+
+  .hero .hero-body .button {
+    width: 120px;
+    min-width: 0;
+    white-space: normal;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero .hero-square {
+    margin-left: calc(33.3333% + 15px);
   }
 }

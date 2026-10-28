@@ -104,7 +104,59 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Renders icons as CSS masks so they inherit the text color (hover / active states).
+ * @param {Element} element Element containing decorated icons
+ */
+export function decorateIconMasks(element) {
+  element.querySelectorAll('span.icon').forEach((span) => {
+    const name = [...span.classList].find((c) => c.startsWith('icon-'));
+    if (!name || name.startsWith('icon-flag-') || span.style.getPropertyValue('--icon')) return;
+    span.style.setProperty('--icon', `url(${window.hlx.codeBasePath}/icons/${name.substring(5)}.svg)`);
+  });
+}
+
+/**
+ * Builds an art-directed picture from several authored images.
+ * Images are ordered from the widest breakpoint to the smallest one.
+ * @param {HTMLImageElement[]} imgs authored images
+ * @param {number[]} breakpoints min-widths matching each image except the last
+ * @param {boolean} eager load eagerly (LCP)
+ * @returns {HTMLPictureElement}
+ */
+export function buildArtDirectedPicture(imgs, breakpoints, eager = false) {
+  const picture = document.createElement('picture');
+  imgs.forEach((authored, i) => {
+    const { pathname } = new URL(authored.src, window.location.href);
+    const ext = pathname.substring(pathname.lastIndexOf('.') + 1);
+    const width = i < imgs.length - 1 ? 2000 : 750;
+    const media = i < imgs.length - 1 ? `(min-width: ${breakpoints[i]}px)` : '';
+    const webp = document.createElement('source');
+    webp.type = 'image/webp';
+    webp.srcset = `${pathname}?width=${width}&format=webply&optimize=medium`;
+    if (media) webp.media = media;
+    picture.append(webp);
+    if (media) {
+      const source = document.createElement('source');
+      source.srcset = `${pathname}?width=${width}&format=${ext}&optimize=medium`;
+      source.media = media;
+      picture.append(source);
+    } else {
+      const img = document.createElement('img');
+      img.src = `${pathname}?width=${width}&format=${ext}&optimize=medium`;
+      img.alt = authored.alt;
+      img.loading = eager ? 'eager' : 'lazy';
+      if (authored.getAttribute('width')) img.width = authored.getAttribute('width');
+      if (authored.getAttribute('height')) img.height = authored.getAttribute('height');
+      picture.append(img);
+    }
+  });
+  return picture;
+}
+
+/**
  * Decorates formatted links to style them as buttons.
+ * Bold links become primary buttons, italic links secondary buttons and
+ * plain standalone links TD "link actions" (green link with a chevron).
  * @param {HTMLElement} main The main container element
  */
 function decorateButtons(main) {
@@ -114,17 +166,20 @@ function decorateButtons(main) {
     const text = a.textContent.trim();
 
     // quick structural checks
-    if (a.querySelector('img') || p.textContent.trim() !== text) return;
+    const hasImage = [...a.querySelectorAll('img')].some((img) => !img.closest('.icon'));
+    if (hasImage || p.textContent.trim() !== text) return;
+
+    const strong = a.closest('strong');
+    const em = a.closest('em');
+    if (!strong && !em) {
+      if (!a.querySelector('.icon')) a.classList.add('link-action');
+      return;
+    }
 
     // skip URL display links
     try {
       if (new URL(a.href).href === new URL(text, window.location).href) return;
     } catch { /* continue */ }
-
-    // require authored formatting for buttonization
-    const strong = a.closest('strong');
-    const em = a.closest('em');
-    if (!strong && !em) return;
 
     p.className = 'button-wrapper';
     a.className = 'button';
@@ -149,6 +204,7 @@ function decorateButtons(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
+  decorateIconMasks(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
@@ -160,7 +216,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = 'fr';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
@@ -207,6 +263,22 @@ function loadDelayed() {
   import('./consent-check.js');
   // load anything that can be postponed to the latest here
 }
+
+/**
+ * Opens links to `/modals/...` documents in a dialog.
+ * @param {Document} doc
+ */
+function autolinkModals(doc) {
+  doc.addEventListener('click', async (e) => {
+    const origin = e.target.closest('a');
+    if (!origin || !origin.href || !origin.href.includes('/modals/')) return;
+    e.preventDefault();
+    const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+    openModal(new URL(origin.href).pathname, origin);
+  });
+}
+
+autolinkModals(document);
 
 async function loadPage() {
   await loadEager(document);

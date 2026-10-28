@@ -1,0 +1,58 @@
+main > .section > .login-wrapper {
+  display: none;
+}
+
+@media (width >= 1024px) {
+  main > .section.hero-login > .login-wrapper {
+    position: relative;
+    display: flex;
+    flex: 0 0 calc(min(100%, var(--container-width)) * 0.25);
+    margin: 0;
+    padding: 0;
+  }
+
+  .login {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 320px;
+    margin: 30px 15px 30px 0;
+    padding-left: 15px;
+    border-left: 2px solid var(--td-rule);
+    background-color: #fff;
+  }
+
+  .login .login-service + .login-service {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--td-rule);
+  }
+
+  .login h2 {
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  .login p.button-wrapper {
+    margin-top: 15px;
+  }
+
+  .login .button {
+    width: 100%;
+  }
+
+  .login .button .icon {
+    width: 14px;
+    height: 16px;
+    margin: -4px 12px 0 0;
+    opacity: 0.6;
+  }
+
+  .login .login-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+}

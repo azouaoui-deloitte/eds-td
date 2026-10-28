@@ -1,0 +1,77 @@
+body.modal-open {
+  overflow: hidden;
+}
+
+dialog.td-modal {
+  position: fixed;
+  box-sizing: border-box;
+  width: min(970px, calc(100vw - 30px));
+  max-width: none;
+  max-height: calc(100vh - 80px);
+  margin: auto;
+  padding: 40px 45px;
+  border: 0;
+  overflow-y: auto;
+}
+
+dialog.td-modal::backdrop {
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.td-modal .td-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.td-modal .td-modal-close .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.td-modal .td-modal-content .section > div {
+  max-width: none;
+  padding: 0;
+}
+
+.td-modal .td-modal-content h2 {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.td-modal .td-modal-content h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.td-modal .td-modal-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.td-modal .td-modal-content li {
+  padding: 4px 0;
+  font-size: 15px;
+  line-height: 23px;
+}
+
+.td-modal .td-modal-content li a {
+  font-family: var(--medium-font-family);
+}
+
+@media (width >= 768px) {
+  .td-modal .td-modal-content .columns > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 30px;
+  }
+}

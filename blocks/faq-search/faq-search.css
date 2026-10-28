@@ -1,0 +1,107 @@
+main > .section > .faq-search-wrapper {
+  max-width: none;
+  margin-top: 30px;
+  padding: 0;
+  background-color: var(--td-grey-bg);
+}
+
+.faq-search {
+  box-sizing: border-box;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 40px var(--gutter);
+}
+
+.faq-search h2 {
+  margin-bottom: 30px;
+  font-family: var(--medium-font-family);
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.faq-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faq-search-field {
+  position: relative;
+}
+
+.faq-search-field input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 5px 15px 5px 40px;
+  border: 1px solid var(--td-input-border);
+  border-radius: 0;
+  background-color: #fff;
+  font-family: var(--medium-font-family);
+  font-size: 19.2px;
+  line-height: 27px;
+  color: var(--text-color);
+}
+
+.faq-search-field input::placeholder {
+  color: #616161;
+}
+
+.faq-search-field input:focus {
+  outline: 2px dotted var(--td-focus);
+  outline-offset: 1px;
+}
+
+.faq-search-field .icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  color: #bdbdbd;
+  transform: translateY(-50%);
+}
+
+.faq-search .button {
+  width: 100%;
+}
+
+.faq-search-content > p {
+  margin-top: 19px;
+  text-align: center;
+}
+
+@media (width >= 768px) {
+  .faq-search-content {
+    max-width: calc(var(--col) * 10);
+    margin-left: calc(var(--col) - var(--gutter));
+  }
+
+  .faq-search h2 {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .faq-search-form {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .faq-search-field {
+    flex: 0 0 calc((100% - 30px) * 0.6878);
+  }
+
+  .faq-search-field input {
+    height: 45px;
+  }
+
+  .faq-search .button {
+    flex: 1;
+    margin-top: 3px;
+  }
+
+  .faq-search-content > p {
+    text-align: left;
+  }
+}

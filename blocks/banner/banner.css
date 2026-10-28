@@ -1,0 +1,96 @@
+main > .section > .banner-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--td-brand);
+}
+
+.banner .banner-media {
+  position: relative;
+  flex: 1;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.banner .banner-media picture {
+  position: absolute;
+  inset: 0;
+}
+
+.banner .banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 30px center;
+}
+
+.banner .banner-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 30px;
+}
+
+.banner .banner-content > div {
+  max-width: 600px;
+}
+
+.banner h2 {
+  margin: 0 0 15px;
+  font-family: var(--display-font-family);
+  font-size: 38px;
+  line-height: 38px;
+  letter-spacing: normal;
+  color: #000;
+}
+
+.banner p {
+  margin: 0 0 15px;
+  line-height: normal;
+}
+
+.banner p.button-wrapper {
+  margin: 0;
+}
+
+.banner a.button:any-link {
+  padding: 12px 24px;
+  border: 0;
+  background-color: var(--text-color);
+  color: #fff;
+  font-size: 15px;
+  line-height: 23px;
+  transition: opacity 0.2s;
+}
+
+.banner a.button:hover {
+  background-color: var(--text-color);
+  opacity: 0.9;
+}
+
+@media (width >= 768px) {
+  .banner {
+    flex-direction: row;
+    min-height: 320px;
+  }
+
+  .banner .banner-media {
+    min-height: 0;
+  }
+
+  .banner .banner-media picture {
+    top: 20px;
+  }
+
+  .banner .banner-media img {
+    object-position: right top;
+  }
+
+  .banner .banner-content {
+    padding: 0 30px;
+  }
+}
