@@ -94,3 +94,85 @@ main > .section > .banner-wrapper {
     padding: 0 30px;
   }
 }
+
+/* fade: full-width photo fading into the page, title and text over its right half */
+.banner.fade {
+  display: block;
+  position: relative;
+  background-color: var(--td-paler-green);
+}
+
+.banner.fade .banner-media {
+  min-height: 0;
+  height: 260px;
+}
+
+.banner.fade .banner-media picture {
+  top: 0;
+}
+
+.banner.fade .banner-media img {
+  object-position: 50% 50%;
+}
+
+.banner.fade .banner-content {
+  display: block;
+  padding: 50px var(--gutter);
+}
+
+.banner.fade .banner-content > div {
+  max-width: none;
+}
+
+.banner.fade p {
+  margin: 0;
+  line-height: 23px;
+}
+
+.banner.fade p:first-child {
+  margin-bottom: 20px;
+  font-family: var(--medium-font-family);
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: -0.5px;
+  color: var(--td-heading);
+  text-wrap: balance;
+}
+
+@media (width >= 768px) {
+  .banner.fade {
+    min-height: 0;
+    background-color: transparent;
+  }
+
+  .banner.fade .banner-media {
+    height: 280px;
+  }
+
+  .banner.fade .banner-content {
+    padding: 60px calc(var(--col) + var(--gutter));
+  }
+}
+
+@media (width >= 1024px) {
+  .banner.fade {
+    display: flex;
+    align-items: center;
+    min-height: 320px;
+  }
+
+  .banner.fade .banner-media {
+    position: absolute;
+    inset: 0;
+    height: auto;
+  }
+
+  .banner.fade .banner-content {
+    position: relative;
+    flex: none;
+    box-sizing: border-box;
+    width: calc(var(--col) * 6 - 30px);
+    margin-left: calc(max(0px, (100% - var(--container-width)) / 2) + var(--gutter) + var(--col) * 6);
+    padding: 0 30px;
+  }
+}

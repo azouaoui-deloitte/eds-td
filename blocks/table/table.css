@@ -1,0 +1,23 @@
+/* table: simple bordered data table (TD legal tables, border=1 cellpadding=5) */
+.table .table-scroll {
+  overflow-x: auto;
+}
+
+.table table {
+  border-collapse: collapse;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.table th,
+.table td {
+  padding: 5px;
+  border: 1px solid var(--td-rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-family: var(--medium-font-family);
+  font-weight: 400;
+}

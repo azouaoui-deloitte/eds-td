@@ -1,10 +1,56 @@
 import { loadFragment } from '../fragment/fragment.js';
 import { loadCSS } from '../../scripts/aem.js';
 
+const toId = (text) => `renvoi-${text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+
+/**
+ * Groups disclaimers: a paragraph starting with a <sup> opens a new `div.disclaimer#renvoi-<sup>`
+ * holding it and the following elements up to the next disclaimer.
+ * @param {Element} content modal content
+ */
+function groupDisclaimers(content) {
+  content.querySelectorAll('.default-content-wrapper').forEach((wrapper) => {
+    let group = null;
+    [...wrapper.children].forEach((el) => {
+      const first = el.firstElementChild;
+      const startsWithSup = el.tagName === 'P' && first && first.tagName === 'SUP'
+        && el.textContent.trimStart().startsWith(first.textContent.trim());
+      if (startsWithSup) {
+        group = document.createElement('div');
+        group.className = 'disclaimer';
+        const id = toId(first.textContent);
+        if (!content.querySelector(`#${CSS.escape(id)}`)) group.id = id;
+        el.before(group);
+      } else if (/^H[1-6]$/.test(el.tagName)) {
+        group = null;
+      }
+      if (group) group.append(el);
+    });
+  });
+}
+
+/**
+ * Scrolls the dialog to the hash target, highlights and focuses it.
+ * @param {HTMLDialogElement} dialog
+ * @param {string} hash
+ */
+function focusTarget(dialog, hash) {
+  if (!hash || hash.length < 2) return;
+  const target = dialog.querySelector(`#${CSS.escape(decodeURIComponent(hash.substring(1)))}`);
+  if (!target) return;
+  const content = dialog.querySelector('.td-modal-content');
+  const scroller = content.scrollHeight > content.clientHeight ? content : dialog;
+  const first = content.querySelector('h1, h2, h3, p') || target;
+  target.classList.add('focus');
+  target.tabIndex = -1;
+  scroller.scrollTop = target.offsetTop - first.offsetTop;
+  target.focus({ preventScroll: true });
+}
+
 /**
  * Opens a fragment in a modal dialog.
  * @param {string} path fragment path
- * @param {HTMLElement} [opener] element to refocus on close
+ * @param {HTMLElement} [opener] element to refocus on close (its #hash is focused in the modal)
  */
 // eslint-disable-next-line import/prefer-default-export
 export async function openModal(path, opener) {
@@ -14,6 +60,8 @@ export async function openModal(path, opener) {
 
   const dialog = document.createElement('dialog');
   dialog.className = 'td-modal';
+  const kind = (path.split('/modals/')[1] || '').split('/')[0];
+  if (kind) dialog.classList.add(`td-modal-${kind}`);
   const heading = fragment.querySelector('h1, h2');
   if (heading) {
     heading.id = heading.id || 'td-modal-title';
@@ -30,6 +78,7 @@ export async function openModal(path, opener) {
   const content = document.createElement('div');
   content.className = 'td-modal-content';
   content.append(...fragment.childNodes);
+  if (kind === 'mentions-juridiques') groupDisclaimers(content);
   dialog.append(close, content);
 
   dialog.addEventListener('click', (e) => {
@@ -44,4 +93,5 @@ export async function openModal(path, opener) {
   document.body.append(dialog);
   document.body.classList.add('modal-open');
   dialog.showModal();
+  focusTarget(dialog, opener && opener.hash);
 }

@@ -1,0 +1,81 @@
+/* simplified-banner (TD cmp-simplified-banner-product): 12-column grid, mobile first */
+main .simplified-banner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 50px 0 40px;
+  text-align: center;
+}
+
+main .simplified-banner > div {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  padding: 0 var(--gutter);
+}
+
+main .simplified-banner .simplified-banner-media {
+  grid-column: 3 / 11;
+  margin-bottom: 27px;
+  line-height: 0;
+}
+
+main .simplified-banner .simplified-banner-media img {
+  width: 100%;
+  height: auto;
+}
+
+main .simplified-banner .simplified-banner-body h2,
+main .simplified-banner .simplified-banner-body h3 {
+  text-wrap: wrap;
+}
+
+main .simplified-banner .simplified-banner-body > :is(h2, h3) + p {
+  margin-top: 23px;
+}
+
+main .simplified-banner .simplified-banner-action {
+  margin-top: 30px;
+}
+
+main .simplified-banner .simplified-banner-action p.button-wrapper {
+  margin: 0;
+}
+
+main .simplified-banner .simplified-banner-action .button {
+  width: 100%;
+}
+
+@media (width >= 768px) {
+  main .simplified-banner {
+    padding-top: 60px;
+    text-align: left;
+  }
+
+  main .simplified-banner .simplified-banner-media {
+    grid-column: 1 / 5;
+    margin-bottom: 0;
+    padding-bottom: 7px;
+  }
+
+  main .simplified-banner .simplified-banner-body {
+    grid-column: 5 / 13;
+  }
+
+  main .simplified-banner .simplified-banner-action {
+    grid-column: 5 / 9;
+  }
+}
+
+@media (width >= 1024px) {
+  main .simplified-banner .simplified-banner-media {
+    grid-column: 3 / 6;
+  }
+
+  main .simplified-banner .simplified-banner-body {
+    grid-column: 6 / 11;
+  }
+
+  main .simplified-banner .simplified-banner-action {
+    grid-column: 5 / 9;
+  }
+}

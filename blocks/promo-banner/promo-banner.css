@@ -1,0 +1,327 @@
+main > .section > .promo-banner-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.promo-banner {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: var(--td-grey-bg);
+}
+
+.promo-banner.white {
+  background-color: #fff;
+}
+
+.promo-banner .promo-banner-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.promo-banner .promo-banner-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.promo-banner .promo-banner-content {
+  position: relative;
+  padding: 20px var(--gutter) 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.promo-banner.pale-green .promo-banner-content {
+  background-color: var(--td-paler-green);
+}
+
+.promo-banner .promo-banner-text > * {
+  margin: 0;
+}
+
+.promo-banner .promo-banner-text > :is(h1, h2, h3) {
+  font-family: var(--medium-font-family);
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: normal;
+  color: var(--td-heading);
+}
+
+.promo-banner .promo-banner-text > * + * {
+  margin-top: 15px;
+}
+
+.promo-banner .promo-banner-text > .promo-banner-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.promo-banner .promo-banner-actions > p {
+  margin: 0;
+}
+
+.promo-banner .promo-banner-actions .button {
+  width: 220px;
+}
+
+/* narrow: text column 8-12, buttons as wide as the text column */
+.promo-banner.narrow {
+  justify-content: flex-start;
+  min-height: 0;
+}
+
+.promo-banner.narrow .promo-banner-content {
+  margin-top: 250px;
+}
+
+.promo-banner.narrow .promo-banner-text > * + * {
+  margin-top: 10px;
+}
+
+.promo-banner.narrow .promo-banner-text > .promo-banner-actions {
+  align-items: stretch;
+  margin-top: 15px;
+}
+
+.promo-banner.narrow .promo-banner-actions .button {
+  width: 100%;
+}
+
+/* wide: wider text column, buttons side by side */
+.promo-banner.wide {
+  justify-content: flex-start;
+  min-height: 0;
+}
+
+.promo-banner.wide .promo-banner-content {
+  margin-top: 170px;
+  padding-top: 30px;
+  text-align: left;
+}
+
+.promo-banner.wide .promo-banner-text > :is(h1, h2, h3) + p {
+  margin-top: 20px;
+}
+
+.promo-banner.wide .promo-banner-text > .promo-banner-actions {
+  margin-top: 20px;
+}
+
+@media (width >= 768px) {
+  .promo-banner,
+  .promo-banner.narrow,
+  .promo-banner.wide {
+    display: block;
+    min-height: 360px;
+    margin-bottom: 0;
+  }
+
+  .promo-banner .promo-banner-media {
+    bottom: 0;
+  }
+
+  .promo-banner .promo-banner-media picture {
+    display: block;
+    height: 100%;
+  }
+
+  .promo-banner .promo-banner-media img {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0;
+  }
+
+  .promo-banner .promo-banner-content,
+  .promo-banner.narrow .promo-banner-content,
+  .promo-banner.wide .promo-banner-content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    box-sizing: border-box;
+    max-width: var(--container-width);
+    min-height: 360px;
+    margin: 0 auto;
+    padding: 0;
+    background: none;
+    text-align: left;
+  }
+
+  .promo-banner .promo-banner-text {
+    grid-column: 7 / span 6;
+    padding: 0 var(--gutter);
+  }
+
+  .promo-banner.narrow .promo-banner-text {
+    grid-column: 8 / span 5;
+  }
+
+  .promo-banner.wide .promo-banner-text {
+    grid-column: 5 / span 8;
+  }
+
+  .promo-banner.image-right .promo-banner-text {
+    grid-column: 1 / span 6;
+  }
+
+  .promo-banner .promo-banner-text > * + *,
+  .promo-banner.narrow .promo-banner-text > * + * {
+    margin-top: 15px;
+  }
+
+  .promo-banner .promo-banner-text > .promo-banner-actions {
+    flex-flow: row wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .promo-banner .promo-banner-actions .button {
+    width: 226px;
+  }
+
+  .promo-banner.narrow .promo-banner-actions .button {
+    width: 100%;
+  }
+
+  .promo-banner.narrow .promo-banner-actions > p {
+    flex: 1 1 0;
+  }
+
+  .promo-banner.wide .promo-banner-actions > p {
+    flex: 1 1 0;
+  }
+
+  .promo-banner.wide .promo-banner-actions .button {
+    width: 100%;
+  }
+}
+
+@media (width >= 1024px) {
+  .promo-banner,
+  .promo-banner.narrow,
+  .promo-banner.wide {
+    min-height: 320px;
+  }
+
+  .promo-banner .promo-banner-content,
+  .promo-banner.narrow .promo-banner-content,
+  .promo-banner.wide .promo-banner-content {
+    min-height: 320px;
+  }
+
+  .promo-banner .promo-banner-text {
+    grid-column: 7 / span 5;
+  }
+
+  .promo-banner.narrow .promo-banner-text {
+    grid-column: 8 / span 5;
+  }
+
+  .promo-banner.wide .promo-banner-text {
+    grid-column: 6 / span 6;
+  }
+
+  .promo-banner.image-right .promo-banner-text {
+    grid-column: 2 / span 5;
+  }
+
+  .promo-banner .promo-banner-text > .promo-banner-actions {
+    gap: 30px;
+  }
+
+  .promo-banner .promo-banner-actions .button {
+    width: 270px;
+  }
+
+  .promo-banner.narrow .promo-banner-text > .promo-banner-actions {
+    margin-top: 20px;
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .promo-banner.narrow .promo-banner-text > .promo-banner-actions {
+    margin-top: 15px;
+  }
+}
+
+/* stacked: image band above the text below 1024px, text column 7-12 on desktop (TD banner-1-7-g) */
+.promo-banner.stacked {
+  display: block;
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.promo-banner.stacked .promo-banner-media {
+  position: static;
+  height: 260px;
+}
+
+.promo-banner.stacked .promo-banner-media picture {
+  display: block;
+  height: 100%;
+}
+
+.promo-banner.stacked .promo-banner-media img {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+.promo-banner.stacked .promo-banner-content {
+  padding: 50px var(--gutter);
+  text-align: left;
+}
+
+.promo-banner.stacked .promo-banner-text > * + * {
+  margin-top: 20px;
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .promo-banner.stacked {
+    min-height: 0;
+  }
+
+  .promo-banner.stacked .promo-banner-media {
+    position: static;
+    height: 280px;
+  }
+
+  .promo-banner.stacked .promo-banner-content {
+    min-height: 0;
+    padding: 60px 0;
+  }
+
+  .promo-banner.stacked .promo-banner-text {
+    grid-column: 2 / span 10;
+  }
+
+  .promo-banner.stacked .promo-banner-text > * + * {
+    margin-top: 20px;
+  }
+}
+
+@media (width >= 1024px) {
+  .promo-banner.stacked .promo-banner-media {
+    position: absolute;
+    height: auto;
+  }
+
+  .promo-banner.stacked .promo-banner-text {
+    grid-column: 7 / span 6;
+    padding: 0 45px;
+  }
+
+  .promo-banner.stacked .promo-banner-text > * + * {
+    margin-top: 20px;
+  }
+}

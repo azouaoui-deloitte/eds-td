@@ -434,3 +434,289 @@ main > .section.spaced-bottom {
     max-width: none;
   }
 }
+
+/* product pages section styles: green-rule, full / tight / loose / snug dividers, spaced-top(-large), gap-top, roomy, boxed, grey */
+main > .section.green-rule {
+  padding-bottom: 30px;
+}
+
+main > .section.green-rule > .default-content-wrapper::after {
+  content: '';
+  display: block;
+  width: calc(var(--col) * 10 - 2 * var(--gutter));
+  height: 2px;
+  margin: 30px auto 0;
+  background-color: var(--td-green);
+}
+
+main > .section.divider.full {
+  padding-top: 31px;
+}
+
+main > .section.divider.full::before {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+main > .section.divider.tight {
+  padding-top: 41px;
+}
+
+main > .section.divider.tight.spaced {
+  padding-top: 51px;
+}
+
+main > .section.divider.loose {
+  padding-top: 71px;
+}
+
+main > .section.divider.snug {
+  padding-top: 81px;
+}
+
+main > .section.divider.snug::before {
+  top: 20px;
+}
+
+main > .section.spaced-top {
+  padding-top: 30px;
+}
+
+main > .section.spaced-top-large {
+  padding-top: 40px;
+}
+
+main > .section.gap-top {
+  margin-top: 30px;
+}
+
+main > .section.grey > .default-content-wrapper + div {
+  margin-top: 0;
+}
+
+/* TD inline text links use the medium weight */
+main :is(p, li) > a:not(.button) {
+  font-family: var(--medium-font-family);
+}
+
+main > .section.divider.tight::before {
+  top: 10px;
+}
+
+main > .section.boxed {
+  max-width: var(--container-width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+main > .section.grey {
+  padding: 30px 0;
+  background-color: var(--td-grey-bg);
+}
+
+@media (width >= 1024px) {
+  main > .section.green-rule > .default-content-wrapper::after {
+    width: calc(var(--col) * 6 - 2 * var(--gutter));
+  }
+}
+
+/* tinted: full-width pale green background, no spacing; narrow: centered paragraphs on 8 columns (10 on mobile) */
+main > .section.tinted {
+  background-color: var(--td-paler-green);
+}
+
+main > .section.narrow > .default-content-wrapper {
+  text-align: center;
+}
+
+main > .section.narrow > .default-content-wrapper > p:not(:has(> .button)) {
+  max-width: calc(var(--col) * 10 - 2 * var(--gutter));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+main > .section.spaced-bottom.large {
+  padding-bottom: 45px;
+}
+
+main > .section.thick-divider.full::before {
+  left: 0;
+  right: 0;
+}
+
+main > .section.indented > .default-content-wrapper {
+  padding-left: calc(var(--col) + var(--gutter));
+}
+
+@media (width >= 768px) {
+  main > .section.narrow > .default-content-wrapper > p:not(:has(> .button)) {
+    max-width: calc(var(--col) * 8 - 2 * var(--gutter));
+  }
+}
+
+/* TD "VIP" call to action (bold + italic link): orange button */
+a.button.accent:any-link,
+button.button.accent {
+  border-color: #ff9500;
+  background-color: #ff9500;
+  color: var(--text-color);
+}
+
+a.button.accent:hover,
+button.button.accent:hover {
+  border-color: #e37609;
+  background-color: #e37609;
+  color: var(--text-color);
+}
+
+/* comptes-bancaires section styles: flush divider, pad-top, center-text, grey-band, centered heading rhythm */
+main > .section.divider.flush {
+  padding-top: 31px;
+}
+
+main > .section.divider.flush::before {
+  top: 0;
+}
+
+main > .section.pad-top {
+  padding-top: 30px;
+}
+
+main > .section.center-text > .default-content-wrapper {
+  text-align: center;
+}
+
+main > .section.grey-band {
+  background-color: var(--td-grey-bg);
+}
+
+main > .section.centered > .default-content-wrapper > p + h2 {
+  margin-top: 30px;
+}
+
+main > .section.centered > .default-content-wrapper > h2 + h3 {
+  margin-top: 10px;
+}
+
+/* cartes / prêts et lignes de crédit section styles: buttons-grid, mobile-only, standalone thick band, grey divider */
+main > .section.buttons-grid {
+  padding-bottom: 30px;
+}
+
+main > .section.buttons-grid > .default-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: calc(2 * var(--gutter));
+  text-align: center;
+}
+
+main > .section.buttons-grid > .default-content-wrapper > * {
+  grid-column: 1 / -1;
+}
+
+main > .section.buttons-grid > .default-content-wrapper > p.button-wrapper {
+  grid-column: auto;
+  margin: 30px 0 0;
+}
+
+main > .section.buttons-grid > .default-content-wrapper > p.button-wrapper .button {
+  width: 100%;
+}
+
+main > .section.mobile-only {
+  display: none;
+}
+
+/* TD title link (cmp-title__link): heading made of a single link gets a chevron */
+main > .section > .default-content-wrapper > h2 > a:only-child::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  bottom: 1px;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 4px;
+  vertical-align: middle;
+  background-color: currentcolor;
+  mask: url('../icons/right-caret.svg') center / contain no-repeat;
+}
+
+main > .section.thick-divider:not(:has(*)) {
+  margin-top: 30px;
+}
+
+@media (width >= 768px) {
+  main > .section.buttons-grid > .default-content-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main > .section.buttons-grid > .default-content-wrapper > p:not(.button-wrapper) {
+    max-width: calc(var(--col) * 10 - 2 * var(--gutter));
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.buttons-grid > .default-content-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  main > .section.buttons-grid > .default-content-wrapper > p:not(.button-wrapper) {
+    max-width: calc(var(--col) * 8 - 2 * var(--gutter));
+  }
+}
+
+@media (width < 768px) {
+  main > .section.mobile-only {
+    display: block;
+    padding-bottom: 30px;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > h3 + p {
+    margin-top: 30px;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > p:first-child {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > p.button-wrapper {
+    margin-top: 20px;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > p.button-wrapper:last-child {
+    margin-top: 35px;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > p.button-wrapper + h3 {
+    margin-top: 15px;
+  }
+
+  main > .section.mobile-only > .default-content-wrapper > h3 > a:only-child::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    bottom: 1px;
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: 4px;
+    vertical-align: middle;
+    background-color: currentcolor;
+    mask: url('../icons/right-caret.svg') center / contain no-repeat;
+  }
+}
+
+/* roomy: 30px between the heading and the following text or block */
+main > .section.roomy > .default-content-wrapper > h2 + p:not(.button-wrapper),
+main > .section.roomy > .default-content-wrapper + div {
+  margin-top: 30px;
+}
+
+/* superscripts (disclaimer references, trademarks) do not change the line height */
+main sup {
+  font-size: 10px;
+  line-height: 0;
+}

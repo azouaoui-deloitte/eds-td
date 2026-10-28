@@ -1,0 +1,146 @@
+main > .section > .circle-links-wrapper {
+  margin-top: 30px;
+}
+
+main > .section > .circle-links-wrapper + .default-content-wrapper {
+  margin-top: 0;
+}
+
+.circle-links {
+  --circle-item: 50%;
+
+  position: relative;
+}
+
+.circle-links > ul {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+}
+
+.circle-links > ul > li {
+  box-sizing: border-box;
+  flex: 0 0 var(--circle-item);
+  padding: 0 10px;
+  text-align: center;
+}
+
+.circle-links .circle-links-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+}
+
+.circle-links .circle-links-item:hover {
+  text-decoration: none;
+}
+
+.circle-links .circle-links-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 85px;
+  height: 85px;
+  border: 1px solid var(--td-green);
+  border-radius: 50%;
+  color: var(--td-heading);
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.circle-links .circle-links-item:hover .circle-links-icon,
+.circle-links .circle-links-item:focus-visible .circle-links-icon {
+  background-color: var(--td-green);
+  color: #fff;
+}
+
+.circle-links .circle-links-icon .icon {
+  width: 48px;
+  height: 48px;
+}
+
+.circle-links .circle-links-label {
+  margin-top: 20px;
+}
+
+.circle-links.link-labels .circle-links-label {
+  font-family: var(--medium-font-family);
+  color: var(--td-link);
+}
+
+.circle-links .circle-links-arrow {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .circle-links {
+    --circle-item: 121px;
+  }
+
+  .circle-links > ul {
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-width: calc(var(--circle-item) * 5);
+    margin: 0 auto;
+    padding: 2px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .circle-links > ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .circle-links.scrollable > ul {
+    justify-content: flex-start;
+  }
+
+  .circle-links > ul > li {
+    padding: 0;
+    scroll-snap-align: start;
+  }
+
+  .circle-links.scrollable .circle-links-arrow:not([hidden]) {
+    display: flex;
+    position: absolute;
+    top: 21px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--td-green);
+    cursor: pointer;
+  }
+
+  .circle-links .circle-links-arrow .icon {
+    width: 16px;
+    height: 32px;
+  }
+
+  .circle-links .circle-links-prev {
+    left: calc(50% - var(--circle-item) * 2.5 - 50px);
+  }
+
+  .circle-links .circle-links-prev .icon {
+    transform: scaleX(-1);
+  }
+
+  .circle-links .circle-links-next {
+    right: calc(50% - var(--circle-item) * 2.5 - 50px);
+  }
+}
+
+@media (width >= 1024px) {
+  .circle-links {
+    --circle-item: 160px;
+  }
+}

@@ -153,3 +153,258 @@
     width: calc(var(--col) * 3 - 30px);
   }
 }
+
+/* aside: small illustration on the left, heading, text and link on a pale green panel */
+.columns.aside {
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 20px var(--gutter) 30px;
+  background-color: var(--td-paler-green);
+  text-align: center;
+}
+
+.columns.aside .columns-img-col {
+  display: flex;
+  justify-content: center;
+}
+
+.columns.aside .columns-img-col img {
+  width: 158px;
+}
+
+.columns.aside .columns-text-col {
+  padding-top: 15px;
+}
+
+.columns.aside .columns-text-col > * + * {
+  margin-top: 20px;
+}
+
+.columns.aside .columns-text-col h2 {
+  text-align: inherit;
+}
+
+.columns.aside .columns-text-col a.link-action {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (width >= 768px) {
+  .columns.aside {
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 20px 0 30px;
+    text-align: left;
+  }
+
+  .columns.aside > div {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+  }
+
+  .columns.aside .columns-img-col {
+    display: block;
+    grid-column: 2 / span 3;
+    padding: 0 var(--gutter);
+  }
+
+  .columns.aside .columns-img-col img {
+    width: 100%;
+  }
+
+  .columns.aside .columns-text-col {
+    grid-column: 5 / span 7;
+    padding: 0 var(--gutter);
+  }
+
+  .columns.aside .columns-text-col > p:last-child {
+    margin-top: 28px;
+  }
+}
+
+@media (width >= 1024px) {
+  .columns.aside .columns-img-col {
+    grid-column: 3 / span 2;
+  }
+
+  .columns.aside .columns-text-col {
+    grid-column: 5 / span 6;
+  }
+}
+
+/* link-right: heading and text (columns 1-8), a standalone link vertically centered on the right (columns 9-12) */
+main > .section > .columns-wrapper:has(.columns.link-right) {
+  margin: -5px auto;
+}
+
+.columns.link-right > div {
+  padding: 0;
+}
+
+.columns.link-right .columns-text-col > * + * {
+  margin-top: 15px;
+}
+
+.columns.link-right .columns-text-col > h2 {
+  text-align: left;
+}
+
+.columns.link-right .columns-text-col > h2 + p {
+  margin-top: 20px;
+}
+
+.columns.link-right .columns-text-col + .columns-text-col {
+  margin-top: 25px;
+}
+
+.columns.link-right .columns-text-col a.link-action {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@media (width >= 768px) {
+  .columns.link-right > div {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    margin: 0 calc(-1 * var(--gutter));
+  }
+
+  .columns.link-right .columns-text-col {
+    grid-column: 1 / span 8;
+    padding: 0 var(--gutter);
+  }
+
+  .columns.link-right .columns-text-col + .columns-text-col {
+    grid-column: 9 / span 4;
+    margin-top: 0;
+  }
+}
+
+/* callout: illustration, title, text and link action (TD custom teaser, stacked below 1024px) */
+.columns.callout {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.columns.callout .columns-img-col {
+  display: flex;
+  justify-content: center;
+}
+
+.columns.callout .columns-img-col img {
+  width: 223px;
+  height: 223px;
+  object-fit: contain;
+}
+
+.columns.callout .columns-text-col:last-child {
+  padding-top: 25px;
+}
+
+.columns.callout .columns-text-col > h3 {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: normal;
+}
+
+.columns.callout .columns-text-col > * + * {
+  margin-top: 25px;
+}
+
+.columns.callout .columns-text-col > h3 + p {
+  text-align: left;
+}
+
+.columns.callout .columns-text-col > p:last-child {
+  margin-top: 30px;
+}
+
+.columns.callout .columns-text-col a.link-action {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.columns.callout sup {
+  font-size: 10px;
+  line-height: 0;
+}
+
+.columns.callout sup a {
+  font-family: var(--medium-font-family);
+}
+
+@media (width >= 768px) {
+  .columns.callout .columns-img-col img {
+    width: 226px;
+  }
+
+  .columns.callout .columns-text-col:last-child {
+    padding: 25px 14px 0;
+  }
+
+  .columns.callout .columns-text-col > h3 + p {
+    text-align: center;
+  }
+
+  .columns.callout .columns-text-col > p:last-child {
+    margin-top: 38px;
+  }
+}
+
+@media (width >= 1024px) {
+  .columns.callout {
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .columns.callout > div {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    column-gap: 30px;
+    margin: 0 var(--col);
+  }
+
+  .columns.callout .columns-img-col img {
+    width: 230px;
+    height: 206px;
+  }
+
+  .columns.callout .columns-text-col:last-child {
+    padding: 0;
+  }
+
+  .columns.callout .columns-text-col > h3 + p {
+    margin-top: 30px;
+    text-align: left;
+  }
+}
+
+/* media, roomy: 50px between the text and the button (TD text with bottom padding) */
+.columns.media.roomy .columns-text-col > p.button-wrapper {
+  margin-top: 50px;
+}
+
+@media (width < 768px) {
+  .columns.media.roomy .columns-img-col {
+    margin-top: 25px;
+  }
+
+  .columns.media.roomy .columns-text-col {
+    padding-top: 21px;
+  }
+}
+
+/* media (TD text-image-list-large-left): full-bleed picture on mobile */
+@media (width < 768px) {
+  .columns.media .columns-img-col {
+    margin: 0 calc(-1 * var(--gutter));
+  }
+
+  .columns.media .columns-text-col {
+    padding-top: 20px;
+  }
+
+  main > .section.divider.tight:has(> .columns-wrapper .columns.media) {
+    padding-top: 66px;
+  }
+}

@@ -1,0 +1,26 @@
+/* geo-location (TD cmp-geo-location) */
+main .geo-location {
+  padding-top: 30px;
+  text-align: center;
+}
+
+main .geo-location strong {
+  font-family: var(--medium-font-family);
+}
+
+main .geo-location strong,
+main .geo-location .geo-location-link {
+  display: block;
+  font-family: var(--medium-font-family);
+}
+
+@media (width >= 768px) {
+  main .geo-location .geo-location-text {
+    padding-left: 10px;
+  }
+
+  main .geo-location strong,
+  main .geo-location .geo-location-link {
+    display: inline;
+  }
+}

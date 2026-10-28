@@ -1,0 +1,48 @@
+main .big-number ol {
+  box-sizing: border-box;
+  max-width: 315px;
+  margin: 0 auto;
+  padding: 20px 0;
+  list-style: none;
+}
+
+main .big-number li {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0;
+}
+
+main .big-number .big-number-figure {
+  flex: 0 0 45px;
+  color: var(--td-link);
+  font-family: var(--medium-font-family);
+  font-size: 32px;
+  line-height: 41.6px;
+  text-align: center;
+}
+
+main .big-number .big-number-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+main .big-number .big-number-body a {
+  font-family: var(--medium-font-family);
+}
+
+@media (width >= 768px) {
+  main .big-number ol {
+    max-width: 462px;
+  }
+
+  main .big-number .big-number-figure {
+    font-size: 53px;
+    line-height: 53px;
+  }
+}
+
+@media (width >= 1024px) {
+  main .big-number ol {
+    max-width: 555px;
+  }
+}

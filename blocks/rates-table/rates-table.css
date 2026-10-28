@@ -1,0 +1,129 @@
+main .section > .rates-table-wrapper {
+  margin-top: 30px;
+}
+
+main .rates-table {
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 15px 0;
+}
+
+main .rates-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: #fff;
+}
+
+main .rates-table th,
+main .rates-table td {
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid var(--td-rule);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: top;
+}
+
+main .rates-table thead th {
+  border-bottom: 0;
+  background-color: var(--td-grey-bg);
+}
+
+main .rates-table thead th:first-child {
+  width: 40%;
+}
+
+main .rates-table a {
+  font-family: var(--medium-font-family);
+}
+
+main .rates-table a.rates-table-tooltip {
+  border-bottom: 2px dotted currentcolor;
+  text-decoration: none;
+}
+
+main .rates-table sup {
+  font-size: 10px;
+  line-height: 0;
+}
+
+main .rates-table sup a {
+  font-family: var(--medium-font-family);
+}
+
+main .rates-table del {
+  text-decoration: line-through;
+}
+
+/* notes and call-to-action authored right after the table */
+main .section > .rates-table-wrapper + .default-content-wrapper {
+  margin-top: 30px;
+}
+
+main .section > .rates-table-wrapper + .default-content-wrapper > p:not(.button-wrapper) {
+  max-width: calc(var(--col) * 8 - 2 * var(--gutter));
+  margin: 0 auto;
+}
+
+main .section > .rates-table-wrapper + .default-content-wrapper > p:first-child {
+  text-align: center;
+}
+
+main .section > .rates-table-wrapper + .default-content-wrapper > p + p:not(.button-wrapper) {
+  margin-top: 15px;
+}
+
+@media (width < 768px) {
+  main .section > .rates-table-wrapper + .default-content-wrapper > p.button-wrapper .button {
+    width: calc(var(--col) * 10 - 2 * var(--gutter));
+  }
+}
+
+@media (width >= 768px) {
+  main .rates-table {
+    margin: 0;
+  }
+
+  main .rates-table table {
+    width: 73.45%;
+    max-width: 630px;
+    margin: 0 auto;
+  }
+}
+
+/* tooltip popover (appended to the body) */
+.rates-table-popover {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 20;
+  width: min(480px, calc(100vw - 30px));
+  padding: 25px 50px 25px 30px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 25%);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+.rates-table-popover:focus {
+  outline: none;
+}
+
+.rates-table-popover-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.rates-table-popover-close .icon {
+  width: 20px;
+  height: 20px;
+}

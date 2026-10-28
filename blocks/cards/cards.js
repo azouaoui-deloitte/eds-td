@@ -1,6 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const MOBILE_CAROUSEL_VARIANTS = ['grey', 'illustration', 'tiles'];
+const MOBILE_CAROUSEL_VARIANTS = ['grey', 'illustration', 'tiles', 'features'];
 
 function classifyCell(cell) {
   if (cell.querySelector('picture') && cell.textContent.trim() === '') return 'cards-card-image';
@@ -67,7 +67,8 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimized);
   });
   block.replaceChildren(ul);
-  if (MOBILE_CAROUSEL_VARIANTS.some((v) => block.classList.contains(v)) && ul.children.length > 1) {
+  if (MOBILE_CAROUSEL_VARIANTS.some((v) => block.classList.contains(v))
+    && !block.classList.contains('stacked') && ul.children.length > 1) {
     block.classList.add('mobile-carousel');
     buildDots(block, ul);
   }

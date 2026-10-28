@@ -75,3 +75,89 @@ dialog.td-modal::backdrop {
     gap: 0 30px;
   }
 }
+
+/* legal mentions: one disclaimer per <sup>, the #hash target is highlighted */
+dialog.td-modal-mentions-juridiques::backdrop {
+  background-color: rgb(255 255 255 / 70%);
+}
+
+dialog.td-modal-mentions-juridiques {
+  max-height: calc(100vh - 135px);
+  padding: 0;
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+  overflow: hidden;
+}
+
+dialog.td-modal-mentions-juridiques[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.td-modal-mentions-juridiques .td-modal-content {
+  padding: 55px 45px 30px;
+  overflow-y: auto;
+}
+
+.td-modal-mentions-juridiques .td-modal-content h1 {
+  margin-bottom: 8px;
+  padding: 0;
+  text-align: left;
+}
+
+.td-modal-mentions-juridiques .td-modal-content .default-content-wrapper > *,
+.td-modal-mentions-juridiques .td-modal-content .disclaimer > * {
+  margin: 0;
+}
+
+.td-modal-mentions-juridiques .td-modal-content .disclaimer + *,
+.td-modal-mentions-juridiques .td-modal-content .disclaimer > * + * {
+  margin-top: 23px;
+}
+
+.td-modal-mentions-juridiques .td-modal-content .disclaimer > ul + * {
+  margin-top: 30px;
+}
+
+.td-modal-mentions-juridiques .td-modal-content .focus {
+  outline: 0;
+  background-color: #fdf2df;
+}
+
+.td-modal-mentions-juridiques .td-modal-content ul {
+  padding-left: 21px;
+}
+
+.td-modal-mentions-juridiques .td-modal-content li {
+  position: relative;
+  padding: 0;
+}
+
+.td-modal-mentions-juridiques .td-modal-content li + li {
+  margin-top: 8px;
+}
+
+.td-modal-mentions-juridiques .td-modal-content li::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: -16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--td-green);
+}
+
+.td-modal-mentions-juridiques .td-modal-content sup {
+  font-size: 10px;
+  line-height: 0;
+}
+
+.td-modal-mentions-juridiques .td-modal-content a:any-link {
+  font-family: var(--medium-font-family);
+}
+
+@media (width < 768px) {
+  .td-modal-mentions-juridiques .td-modal-content {
+    padding: 55px 20px 30px;
+  }
+}

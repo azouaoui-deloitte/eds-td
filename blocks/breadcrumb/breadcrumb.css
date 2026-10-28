@@ -1,0 +1,58 @@
+main .breadcrumb {
+  padding: 30px 0;
+}
+
+main .breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main .breadcrumb li {
+  display: none;
+}
+
+main .breadcrumb a {
+  font-family: var(--medium-font-family);
+}
+
+main .breadcrumb li.breadcrumb-parent {
+  display: block;
+}
+
+main .breadcrumb li.breadcrumb-parent a::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  vertical-align: 1px;
+  background-color: currentcolor;
+  mask: url('../../icons/left-caret.svg') center / contain no-repeat;
+}
+
+@media (width >= 768px) {
+  main .breadcrumb li {
+    display: block;
+  }
+
+  main .breadcrumb li.breadcrumb-parent a::before {
+    content: none;
+  }
+
+  main .breadcrumb li + li::before {
+    content: '/';
+    margin: 0 0.25em 0 0.27em;
+  }
+
+  main .breadcrumb li.breadcrumb-current {
+    font-family: var(--medium-font-family);
+  }
+}
+
+/* compact: 10px below (TD cmp--padding-bottom-small, cartes-de-credit) */
+main .breadcrumb.compact {
+  padding-bottom: 10px;
+}

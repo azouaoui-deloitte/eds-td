@@ -1,0 +1,253 @@
+/* banner-triple (TD cmp-banner-triple) — mobile first: swipeable slides with dots */
+main > .section > .banner-triple-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+main .banner-triple {
+  padding-bottom: 25px;
+}
+
+main .banner-triple .banner-triple-slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+main .banner-triple .banner-triple-slides::-webkit-scrollbar {
+  display: none;
+}
+
+main .banner-triple .banner-triple-slide {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 100%;
+  position: relative;
+  height: 420px;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+main .banner-triple .banner-triple-media,
+main .banner-triple .banner-triple-media picture {
+  position: absolute;
+  inset: 0;
+}
+
+main .banner-triple .banner-triple-media img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 0;
+}
+
+main .banner-triple .banner-triple-content {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+
+main .banner-triple .banner-triple-content > div {
+  box-sizing: border-box;
+  width: calc(100% + 2 * var(--gutter));
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 20px var(--gutter) 0;
+  background-color: var(--background-color);
+}
+
+main .banner-triple .banner-triple-content h2 {
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: normal;
+}
+
+main .banner-triple sup {
+  position: relative;
+  top: -5px;
+  font-size: 10px;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+main .banner-triple .banner-triple-content h2 + p {
+  margin-top: 15px;
+}
+
+main .banner-triple .banner-triple-content p.button-wrapper {
+  margin-top: 25px;
+}
+
+main .banner-triple .banner-triple-content .button {
+  width: 100%;
+}
+
+main .banner-triple .banner-triple-tabs {
+  display: none;
+}
+
+main .banner-triple .banner-triple-dots {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 31px;
+  border-bottom: 1px solid var(--td-rule);
+}
+
+main .banner-triple .banner-triple-dot {
+  box-sizing: border-box;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  padding: 0;
+  border: 1px solid var(--td-link);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+main .banner-triple .banner-triple-dot.active {
+  background-color: var(--td-link);
+}
+
+main .banner-triple .banner-triple-dot:focus-visible {
+  outline: 2px dotted var(--td-focus);
+  outline-offset: 2px;
+}
+
+@media (width >= 768px) {
+  main .banner-triple .banner-triple-slide {
+    height: 360px;
+  }
+
+  main .banner-triple .banner-triple-content {
+    align-items: center;
+    text-align: left;
+  }
+
+  main .banner-triple .banner-triple-content > div {
+    width: 50%;
+    margin: 0 0 0 50%;
+    padding: 0 0 0 var(--gutter);
+    background-color: transparent;
+  }
+
+  main .banner-triple .banner-triple-content p.button-wrapper {
+    margin-top: 30px;
+  }
+}
+
+/* desktop: stacked banners switched by tabs */
+@media (width >= 1024px) {
+  main .banner-triple {
+    padding-bottom: 0;
+  }
+
+  main .banner-triple .banner-triple-slides {
+    display: grid;
+    overflow: visible;
+  }
+
+  main .banner-triple .banner-triple-slide {
+    grid-area: 1 / 1;
+    height: 320px;
+    visibility: hidden;
+  }
+
+  main .banner-triple .banner-triple-slide.active {
+    visibility: visible;
+  }
+
+  main .banner-triple .banner-triple-content {
+    padding: 0;
+  }
+
+  main .banner-triple .banner-triple-content > div {
+    padding-right: var(--gutter);
+  }
+
+  main .banner-triple .banner-triple-content .button {
+    width: calc(var(--col) * 3 - 30px);
+  }
+
+  main .banner-triple .banner-triple-dots {
+    display: none;
+  }
+
+  main .banner-triple .banner-triple-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--td-rule);
+  }
+
+  main .banner-triple .banner-triple-tabs::before,
+  main .banner-triple .banner-triple-tabs::after {
+    content: '';
+    flex: 1 0 0;
+  }
+
+  main .banner-triple .banner-triple-tab {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 calc(min(100%, var(--container-width) - 30px) / 3);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 0 0 -1px;
+    padding: 30px 15px;
+    border: 0;
+    border-right: 1px solid var(--td-rule);
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--td-link);
+    font-family: var(--medium-font-family);
+    font-size: 18px;
+    line-height: 28px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  main .banner-triple .banner-triple-tab:last-child {
+    border-right: 0;
+  }
+
+  main .banner-triple .banner-triple-label {
+    display: block;
+    margin: 0 20px 10px 10px;
+    letter-spacing: -0.5px;
+    text-wrap: balance;
+  }
+
+  main .banner-triple .banner-triple-tab:hover .banner-triple-label {
+    text-decoration: underline;
+  }
+
+  main .banner-triple .banner-triple-tab.active {
+    border-bottom: 5px solid var(--td-link);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: default;
+  }
+
+  main .banner-triple .banner-triple-tab.active .banner-triple-label {
+    text-decoration: none;
+  }
+
+  main .banner-triple .banner-triple-tab:focus-visible {
+    outline: 2px dotted var(--td-focus);
+    outline-offset: -4px;
+  }
+}
+
+@media (width >= 1200px) {
+  main .banner-triple .banner-triple-media img {
+    object-position: 50% 0;
+  }
+}
