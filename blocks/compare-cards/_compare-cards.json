@@ -1,0 +1,119 @@
+{
+  "definitions": [
+    {
+      "title": "Compare Cards",
+      "id": "compare-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Compare Cards",
+              "filter": "compare-cards",
+              "model": "compare-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Produit",
+      "id": "compare-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Produit",
+              "model": "compare-card"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Réglages « Comparer »",
+      "id": "compare-settings",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Réglages « Comparer »",
+              "model": "compare-settings"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "compare-cards",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Variantes",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "credit",
+              "value": "credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compare-card",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "heading",
+          "label": "Ruban (optionnel) et titre",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image – texte alternatif"
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Caractéristiques et boutons",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "compare-settings",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Libellés du tiroir de comparaison",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "compare-cards",
+      "components": [
+        "compare-card",
+        "compare-settings"
+      ]
+    }
+  ]
+}

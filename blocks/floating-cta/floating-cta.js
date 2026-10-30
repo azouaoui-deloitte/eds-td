@@ -1,11 +1,15 @@
 /**
  * Floating call-to-action bar (TD "floating container").
  * Fixed under the header; shown once its authored position has scrolled under the header.
- * Content: one row, first cell = text (hidden on mobile), second cell = button link.
+ * Content: first cell = text (hidden on mobile), second cell = button link
+ * (one row with two cells, or two rows of one cell).
  */
 export default function decorate(block) {
-  const row = block.firstElementChild;
-  const cells = row ? [...row.children] : [];
+  const rows = [...block.children];
+  // DA: one row with two cells; AEM (Universal Editor): one row per field
+  const cells = rows.length > 1
+    ? rows.map((r) => r.firstElementChild)
+    : [...(rows[0]?.children || [])];
   const [textCell, ctaCell] = cells.length > 1 ? cells : [null, cells[0]];
 
   const bar = document.createElement('div');

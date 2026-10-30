@@ -9,19 +9,65 @@
     "id": "section",
     "components": [
       "text",
+      "title",
       "image",
       "button",
-      "title",
-      "hero",
+      "accordion",
+      "banner",
+      "banner-triple",
+      "big-number",
+      "breadcrumb",
       "cards",
+      "circle-links",
       "columns",
-      "fragment"
+      "compare-cards",
+      "faq-search",
+      "floating-cta",
+      "fragment",
+      "geo-location",
+      "hero",
+      "item-list",
+      "login",
+      "notification",
+      "promo-banner",
+      "rates-table",
+      "simplified-banner",
+      "simplified-compare",
+      "table",
+      "tabs"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
+    "id": "banner-triple",
+    "components": [
+      "banner-triple-item"
+    ]
+  },
+  {
+    "id": "big-number",
+    "components": [
+      "big-number-step"
     ]
   },
   {
     "id": "cards",
     "components": [
-      "card"
+      "card",
+      "card-icon",
+      "card-text",
+      "card-titled"
+    ]
+  },
+  {
+    "id": "circle-links",
+    "components": [
+      "circle-link"
     ]
   },
   {
@@ -34,9 +80,57 @@
     "id": "column",
     "components": [
       "text",
+      "title",
       "image",
-      "button",
-      "title"
+      "button"
+    ]
+  },
+  {
+    "id": "compare-cards",
+    "components": [
+      "compare-card",
+      "compare-settings"
+    ]
+  },
+  {
+    "id": "item-list",
+    "components": [
+      "item-list-item",
+      "item-list-more"
+    ]
+  },
+  {
+    "id": "login",
+    "components": [
+      "login-service"
+    ]
+  },
+  {
+    "id": "rates-table",
+    "components": [
+      "rates-table-row"
+    ]
+  },
+  {
+    "id": "simplified-compare",
+    "components": [
+      "simplified-compare-item"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row-2",
+      "table-row-3",
+      "table-row-4",
+      "table-row-5",
+      "table-row-6"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
     ]
   }
 ]

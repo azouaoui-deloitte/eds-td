@@ -38,6 +38,51 @@ if (window.trustedTypes && window.trustedTypes.createPolicy) {
 }
 
 /**
+ * Moves all the attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ * @param {string[]} [attributes] the attributes to move (all by default)
+ */
+export function moveAttributes(from, to, attributes) {
+  if (!from || !to) return;
+  const names = attributes || [...from.attributes].map(({ nodeName }) => nodeName);
+  names.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Moves the Universal Editor instrumentation (data-aue-* / data-richtext-*) of an element
+ * to the element that replaces it during block decoration.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveInstrumentation(from, to) {
+  if (!from || !to) return;
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
+}
+
+/**
+ * Returns the site root to prefix content paths with: empty on aem.page / aem.live,
+ * the AEM site path (e.g. `/content/eds-td`) when rendered by AEM author (Universal Editor).
+ * @returns {string}
+ */
+export function getContentRoot() {
+  const match = window.location.pathname.match(/^\/content\/[^/]+(?=\/)/);
+  return match ? match[0] : '';
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
@@ -159,7 +204,7 @@ export function buildArtDirectedPicture(imgs, breakpoints, eager = false) {
  * plain standalone links TD "link actions" (green link with a chevron).
  * @param {HTMLElement} main The main container element
  */
-function decorateButtons(main) {
+export function decorateButtons(main) {
   main.querySelectorAll('p a[href]').forEach((a) => {
     a.title = a.title || a.textContent;
     const p = a.closest('p');

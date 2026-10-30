@@ -1,0 +1,201 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "name",
+          "label": "Nom de la section",
+          "description": "Libellé affiché dans l’arborescence du contenu"
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "hero-login",
+              "value": "hero-login"
+            },
+            {
+              "name": "headline",
+              "value": "headline"
+            },
+            {
+              "name": "divider",
+              "value": "divider"
+            },
+            {
+              "name": "thick-divider",
+              "value": "thick-divider"
+            },
+            {
+              "name": "full",
+              "value": "full"
+            },
+            {
+              "name": "flush",
+              "value": "flush"
+            },
+            {
+              "name": "tight",
+              "value": "tight"
+            },
+            {
+              "name": "snug",
+              "value": "snug"
+            },
+            {
+              "name": "loose",
+              "value": "loose"
+            },
+            {
+              "name": "spaced",
+              "value": "spaced"
+            },
+            {
+              "name": "spaced-top",
+              "value": "spaced-top"
+            },
+            {
+              "name": "spaced-top-large",
+              "value": "spaced-top-large"
+            },
+            {
+              "name": "spaced-bottom",
+              "value": "spaced-bottom"
+            },
+            {
+              "name": "pad-top",
+              "value": "pad-top"
+            },
+            {
+              "name": "gap-top",
+              "value": "gap-top"
+            },
+            {
+              "name": "roomy",
+              "value": "roomy"
+            },
+            {
+              "name": "indented",
+              "value": "indented"
+            },
+            {
+              "name": "centered",
+              "value": "centered"
+            },
+            {
+              "name": "center-text",
+              "value": "center-text"
+            },
+            {
+              "name": "narrow",
+              "value": "narrow"
+            },
+            {
+              "name": "large",
+              "value": "large"
+            },
+            {
+              "name": "boxed",
+              "value": "boxed"
+            },
+            {
+              "name": "buttons-grid",
+              "value": "buttons-grid"
+            },
+            {
+              "name": "green-rule",
+              "value": "green-rule"
+            },
+            {
+              "name": "light-green",
+              "value": "light-green"
+            },
+            {
+              "name": "pale-green",
+              "value": "pale-green"
+            },
+            {
+              "name": "grey",
+              "value": "grey"
+            },
+            {
+              "name": "grey-band",
+              "value": "grey-band"
+            },
+            {
+              "name": "tinted",
+              "value": "tinted"
+            },
+            {
+              "name": "mobile-only",
+              "value": "mobile-only"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tab",
+          "label": "Onglet (Tab)",
+          "description": "Rattache la section à l’onglet du bloc Tabs portant ce libellé"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "title",
+        "image",
+        "button",
+        "accordion",
+        "banner",
+        "banner-triple",
+        "big-number",
+        "breadcrumb",
+        "cards",
+        "circle-links",
+        "columns",
+        "compare-cards",
+        "faq-search",
+        "floating-cta",
+        "fragment",
+        "geo-location",
+        "hero",
+        "item-list",
+        "login",
+        "notification",
+        "promo-banner",
+        "rates-table",
+        "simplified-banner",
+        "simplified-compare",
+        "table",
+        "tabs"
+      ]
+    }
+  ]
+}

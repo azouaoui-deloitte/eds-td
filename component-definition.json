@@ -1,11 +1,11 @@
 {
   "groups": [
     {
-      "title": "Default Content",
+      "title": "Contenu par défaut",
       "id": "default",
       "components": [
         {
-          "title": "Text",
+          "title": "Texte",
           "id": "text",
           "plugins": {
             "xwalk": {
@@ -17,7 +17,7 @@
           }
         },
         {
-          "title": "Title",
+          "title": "Titre",
           "id": "title",
           "plugins": {
             "xwalk": {
@@ -43,7 +43,7 @@
           }
         },
         {
-          "title": "Button",
+          "title": "Bouton",
           "id": "button",
           "plugins": {
             "xwalk": {
@@ -79,9 +79,130 @@
       ]
     },
     {
-      "title": "Blocks",
+      "title": "Blocs",
       "id": "blocks",
       "components": [
+        {
+          "title": "Accordion",
+          "id": "accordion",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Accordion",
+                  "filter": "accordion",
+                  "model": "accordion"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Question",
+          "id": "accordion-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Question",
+                  "model": "accordion-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Banner Triple",
+          "id": "banner-triple",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Banner Triple",
+                  "filter": "banner-triple"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Bannière",
+          "id": "banner-triple-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Bannière",
+                  "model": "banner-triple-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Banner",
+          "id": "banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Banner",
+                  "model": "banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Big Number",
+          "id": "big-number",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Big Number",
+                  "filter": "big-number"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Étape",
+          "id": "big-number-step",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Étape",
+                  "model": "big-number-step"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Breadcrumb",
+          "id": "breadcrumb",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Breadcrumb",
+                  "model": "breadcrumb"
+                }
+              }
+            }
+          }
+        },
         {
           "title": "Cards",
           "id": "cards",
@@ -91,22 +212,99 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Cards",
-                  "filter": "cards"
+                  "filter": "cards",
+                  "model": "cards"
                 }
               }
             }
           }
         },
         {
-          "title": "Card",
+          "title": "Carte (image + texte)",
           "id": "card",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
-                  "name": "Card",
+                  "name": "Carte (image + texte)",
                   "model": "card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carte (icône + texte)",
+          "id": "card-icon",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carte (icône + texte)",
+                  "model": "card-icon"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carte (texte seul)",
+          "id": "card-text",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carte (texte seul)",
+                  "model": "card-text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carte (titre + image + texte)",
+          "id": "card-titled",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carte (titre + image + texte)",
+                  "model": "card-titled"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Circle Links",
+          "id": "circle-links",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Circle Links",
+                  "filter": "circle-links",
+                  "model": "circle-links"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Lien circulaire",
+          "id": "circle-link",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Lien circulaire",
+                  "model": "circle-link"
                 }
               }
             }
@@ -128,6 +326,82 @@
           }
         },
         {
+          "title": "Compare Cards",
+          "id": "compare-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Compare Cards",
+                  "filter": "compare-cards",
+                  "model": "compare-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Produit",
+          "id": "compare-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Produit",
+                  "model": "compare-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Réglages « Comparer »",
+          "id": "compare-settings",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Réglages « Comparer »",
+                  "model": "compare-settings"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "FAQ Search",
+          "id": "faq-search",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Faq Search",
+                  "model": "faq-search"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Floating CTA",
+          "id": "floating-cta",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Floating Cta",
+                  "model": "floating-cta"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
@@ -143,6 +417,21 @@
           }
         },
         {
+          "title": "Geo Location",
+          "id": "geo-location",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Geo Location",
+                  "model": "geo-location"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
@@ -152,6 +441,306 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Item List",
+          "id": "item-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Item List",
+                  "filter": "item-list"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Élément",
+          "id": "item-list-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Élément",
+                  "model": "item-list-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Libellé « Tout voir »",
+          "id": "item-list-more",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Libellé « Tout voir »",
+                  "model": "item-list-more"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Login",
+          "id": "login",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Login",
+                  "filter": "login"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Service en ligne",
+          "id": "login-service",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Service en ligne",
+                  "model": "login-service"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Notification",
+          "id": "notification",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Notification",
+                  "model": "notification"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Banner",
+          "id": "promo-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Promo Banner",
+                  "model": "promo-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Rates Table",
+          "id": "rates-table",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Rates Table",
+                  "filter": "rates-table"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne",
+          "id": "rates-table-row",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne",
+                  "model": "rates-table-row"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simplified Banner",
+          "id": "simplified-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Simplified Banner",
+                  "model": "simplified-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simplified Compare",
+          "id": "simplified-compare",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Simplified Compare",
+                  "filter": "simplified-compare"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Produit",
+          "id": "simplified-compare-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Produit",
+                  "model": "simplified-compare-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Table",
+          "id": "table",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Table",
+                  "filter": "table"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne (2 colonnes)",
+          "id": "table-row-2",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne (2 colonnes)",
+                  "model": "table-row-2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne (3 colonnes)",
+          "id": "table-row-3",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne (3 colonnes)",
+                  "model": "table-row-3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne (4 colonnes)",
+          "id": "table-row-4",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne (4 colonnes)",
+                  "model": "table-row-4"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne (5 colonnes)",
+          "id": "table-row-5",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne (5 colonnes)",
+                  "model": "table-row-5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Ligne (6 colonnes)",
+          "id": "table-row-6",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Ligne (6 colonnes)",
+                  "model": "table-row-6"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tabs",
+          "id": "tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tabs",
+                  "filter": "tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Onglet",
+          "id": "tab",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Onglet",
+                  "model": "tab"
                 }
               }
             }

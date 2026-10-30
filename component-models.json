@@ -6,7 +6,7 @@
         "component": "text",
         "valueType": "string",
         "name": "jcr:title",
-        "label": "Title"
+        "label": "Titre"
       },
       {
         "component": "text",
@@ -15,11 +15,22 @@
         "label": "Description"
       },
       {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "nav",
+        "label": "Navigation (page nav)"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "footer",
+        "label": "Pied de page (page footer)"
+      },
+      {
         "component": "text",
         "valueType": "string",
-        "name": "keywords",
-        "multi": true,
-        "label": "Keywords"
+        "name": "template",
+        "label": "Gabarit TD"
       }
     ]
   },
@@ -28,14 +39,16 @@
     "fields": [
       {
         "component": "reference",
+        "valueType": "string",
         "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt Text"
+        "label": "Texte alternatif"
       }
     ]
   },
@@ -44,13 +57,15 @@
     "fields": [
       {
         "component": "text",
+        "valueType": "string",
         "name": "title",
-        "label": "Title"
+        "label": "Titre"
       },
       {
         "component": "select",
         "name": "titleType",
-        "label": "Title Type",
+        "label": "Niveau",
+        "valueType": "string",
         "options": [
           {
             "name": "h1",
@@ -85,34 +100,38 @@
     "fields": [
       {
         "component": "aem-content",
+        "valueType": "string",
         "name": "link",
-        "label": "Link"
+        "label": "Lien"
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "linkText",
-        "label": "Text"
+        "label": "Texte"
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "linkTitle",
-        "label": "Title"
+        "label": "Titre (infobulle)"
       },
       {
         "component": "select",
         "name": "linkType",
-        "label": "Type",
+        "label": "Style",
+        "valueType": "string",
         "options": [
           {
-            "name": "default",
+            "name": "lien (chevron vert)",
             "value": ""
           },
           {
-            "name": "primary",
+            "name": "primaire (vert)",
             "value": "primary"
           },
           {
-            "name": "secondary",
+            "name": "secondaire (contour)",
             "value": "secondary"
           }
         ]
@@ -124,18 +143,472 @@
     "fields": [
       {
         "component": "text",
+        "valueType": "string",
         "name": "name",
-        "label": "Section Name",
-        "description": "The label shown for this section in the Content Tree"
+        "label": "Nom de la section",
+        "description": "Libellé affiché dans l’arborescence du contenu"
       },
       {
         "component": "multiselect",
         "name": "style",
         "label": "Style",
+        "valueType": "string",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "hero-login",
+            "value": "hero-login"
+          },
+          {
+            "name": "headline",
+            "value": "headline"
+          },
+          {
+            "name": "divider",
+            "value": "divider"
+          },
+          {
+            "name": "thick-divider",
+            "value": "thick-divider"
+          },
+          {
+            "name": "full",
+            "value": "full"
+          },
+          {
+            "name": "flush",
+            "value": "flush"
+          },
+          {
+            "name": "tight",
+            "value": "tight"
+          },
+          {
+            "name": "snug",
+            "value": "snug"
+          },
+          {
+            "name": "loose",
+            "value": "loose"
+          },
+          {
+            "name": "spaced",
+            "value": "spaced"
+          },
+          {
+            "name": "spaced-top",
+            "value": "spaced-top"
+          },
+          {
+            "name": "spaced-top-large",
+            "value": "spaced-top-large"
+          },
+          {
+            "name": "spaced-bottom",
+            "value": "spaced-bottom"
+          },
+          {
+            "name": "pad-top",
+            "value": "pad-top"
+          },
+          {
+            "name": "gap-top",
+            "value": "gap-top"
+          },
+          {
+            "name": "roomy",
+            "value": "roomy"
+          },
+          {
+            "name": "indented",
+            "value": "indented"
+          },
+          {
+            "name": "centered",
+            "value": "centered"
+          },
+          {
+            "name": "center-text",
+            "value": "center-text"
+          },
+          {
+            "name": "narrow",
+            "value": "narrow"
+          },
+          {
+            "name": "large",
+            "value": "large"
+          },
+          {
+            "name": "boxed",
+            "value": "boxed"
+          },
+          {
+            "name": "buttons-grid",
+            "value": "buttons-grid"
+          },
+          {
+            "name": "green-rule",
+            "value": "green-rule"
+          },
+          {
+            "name": "light-green",
+            "value": "light-green"
+          },
+          {
+            "name": "pale-green",
+            "value": "pale-green"
+          },
+          {
+            "name": "grey",
+            "value": "grey"
+          },
+          {
+            "name": "grey-band",
+            "value": "grey-band"
+          },
+          {
+            "name": "tinted",
+            "value": "tinted"
+          },
+          {
+            "name": "mobile-only",
+            "value": "mobile-only"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tab",
+        "label": "Onglet (Tab)",
+        "description": "Rattache la section à l’onglet du bloc Tabs portant ce libellé"
+      }
+    ]
+  },
+  {
+    "id": "accordion",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "compact",
+            "value": "compact"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "question",
+        "label": "Question",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "answer",
+        "label": "Réponse",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "banner-triple-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Libellé d’onglet",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktop",
+        "label": "Image – bureau ≥1200px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_desktopAlt",
+        "label": "Image – bureau ≥1200px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletLandscape",
+        "label": "Image – tablette paysage ≥1024px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletLandscapeAlt",
+        "label": "Image – tablette paysage ≥1024px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletPortrait",
+        "label": "Image – tablette portrait ≥768px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletPortraitAlt",
+        "label": "Image – tablette portrait ≥768px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobile",
+        "label": "Image – mobile",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_mobileAlt",
+        "label": "Image – mobile (alt)"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Contenu",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "banner",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "fade",
+            "value": "fade"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktop",
+        "label": "Image – bureau ≥1200px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_desktopAlt",
+        "label": "Image – bureau ≥1200px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletLandscape",
+        "label": "Image – tablette paysage ≥1024px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletLandscapeAlt",
+        "label": "Image – tablette paysage ≥1024px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletPortrait",
+        "label": "Image – tablette portrait ≥768px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletPortraitAlt",
+        "label": "Image – tablette portrait ≥768px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobile",
+        "label": "Image – mobile",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_mobileAlt",
+        "label": "Image – mobile (alt)"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Contenu",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "big-number-step",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Titre et texte",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "breadcrumb",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "compact",
+            "value": "compact"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Liens parents séparés par « / » puis titre de la page",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "icons",
+            "value": "icons"
+          },
+          {
+            "name": "even",
+            "value": "even"
+          },
+          {
+            "name": "teaser",
+            "value": "teaser"
+          },
+          {
+            "name": "grey",
+            "value": "grey"
+          },
+          {
+            "name": "illustration",
+            "value": "illustration"
+          },
+          {
+            "name": "stacked",
+            "value": "stacked"
+          },
+          {
+            "name": "ruled",
+            "value": "ruled"
+          },
+          {
+            "name": "phone",
+            "value": "phone"
+          },
+          {
+            "name": "offset",
+            "value": "offset"
+          },
+          {
+            "name": "swipe",
+            "value": "swipe"
+          },
+          {
+            "name": "white",
+            "value": "white"
+          },
+          {
+            "name": "horizontal",
+            "value": "horizontal"
+          },
+          {
+            "name": "tiles",
+            "value": "tiles"
+          },
+          {
+            "name": "promo",
+            "value": "promo"
+          },
+          {
+            "name": "text-only",
+            "value": "text-only"
+          },
+          {
+            "name": "feature",
+            "value": "feature"
+          },
+          {
+            "name": "features",
+            "value": "features"
+          },
+          {
+            "name": "cta",
+            "value": "cta"
+          },
+          {
+            "name": "lines",
+            "value": "lines"
+          },
+          {
+            "name": "left",
+            "value": "left"
+          },
+          {
+            "name": "divided",
+            "value": "divided"
+          },
+          {
+            "name": "tight",
+            "value": "tight"
+          },
+          {
+            "name": "inset",
+            "value": "inset"
+          },
+          {
+            "name": "text-left",
+            "value": "text-left"
+          },
+          {
+            "name": "link-tiles",
+            "value": "link-tiles"
+          },
+          {
+            "name": "pale",
+            "value": "pale"
           }
         ]
       }
@@ -152,10 +625,109 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image – texte alternatif"
+      },
+      {
         "component": "richtext",
         "name": "text",
-        "value": "",
-        "label": "Text",
+        "label": "Texte",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-icon",
+    "fields": [
+      {
+        "component": "text",
+        "name": "icon",
+        "label": "Icône",
+        "valueType": "string",
+        "description": "Nom d’icône entre deux-points, ex. :savings: (fichiers /icons/*.svg)"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Texte",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-text",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Texte",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-titled",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "heading",
+        "label": "Titre",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image – texte alternatif"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Texte",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "circle-links",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "link-labels",
+            "value": "link-labels"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "circle-link",
+    "fields": [
+      {
+        "component": "text",
+        "name": "icon",
+        "label": "Icône",
+        "valueType": "string",
+        "description": "Nom d’icône entre deux-points, ex. :savings: (fichiers /icons/*.svg)"
+      },
+      {
+        "component": "richtext",
+        "name": "link",
+        "label": "Lien",
         "valueType": "string"
       }
     ]
@@ -164,18 +736,160 @@
     "id": "columns",
     "fields": [
       {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "teaser",
+            "value": "teaser"
+          },
+          {
+            "name": "media",
+            "value": "media"
+          },
+          {
+            "name": "link-right",
+            "value": "link-right"
+          },
+          {
+            "name": "callout",
+            "value": "callout"
+          },
+          {
+            "name": "aside",
+            "value": "aside"
+          },
+          {
+            "name": "roomy",
+            "value": "roomy"
+          },
+          {
+            "name": "pad-mobile",
+            "value": "pad-mobile"
+          }
+        ]
+      },
+      {
         "component": "text",
         "valueType": "number",
         "name": "columns",
         "value": "",
-        "label": "Columns"
+        "label": "Colonnes"
       },
       {
         "component": "text",
         "valueType": "number",
         "name": "rows",
         "value": "",
-        "label": "Rows"
+        "label": "Lignes"
+      }
+    ]
+  },
+  {
+    "id": "compare-cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "credit",
+            "value": "credit"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "compare-card",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "heading",
+        "label": "Ruban (optionnel) et titre",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image – texte alternatif"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Caractéristiques et boutons",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "compare-settings",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Libellés du tiroir de comparaison",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "faq-search",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Titre, libellé du champ, bouton (lien vers la recherche), lien secondaire",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "floating-cta",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "half",
+            "value": "half"
+          },
+          {
+            "name": "offset",
+            "value": "offset"
+          },
+          {
+            "name": "wide",
+            "value": "wide"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Texte (masqué sur mobile)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "cta",
+        "label": "Bouton",
+        "valueType": "string"
       }
     ]
   },
@@ -184,13 +898,106 @@
     "fields": [
       {
         "component": "aem-content",
+        "valueType": "string",
         "name": "reference",
-        "label": "Reference"
+        "label": "Page fragment"
+      }
+    ]
+  },
+  {
+    "id": "geo-location",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Texte (le lien ouvre la modale province)",
+        "valueType": "string"
       }
     ]
   },
   {
     "id": "hero",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "aziz",
+            "value": "aziz"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktop",
+        "label": "Image de fond – bureau ≥1200px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_desktopAlt",
+        "label": "Image de fond – bureau ≥1200px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletLandscape",
+        "label": "Image de fond – tablette paysage ≥1024px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletLandscapeAlt",
+        "label": "Image de fond – tablette paysage ≥1024px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletPortrait",
+        "label": "Image de fond – tablette portrait ≥768px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletPortraitAlt",
+        "label": "Image de fond – tablette portrait ≥768px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobile",
+        "label": "Image de fond – mobile",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_mobileAlt",
+        "label": "Image de fond – mobile (alt)"
+      },
+      {
+        "component": "richtext",
+        "name": "headline",
+        "label": "Accroche (carré vert)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Texte et bouton",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "item-list-item",
     "fields": [
       {
         "component": "reference",
@@ -203,14 +1010,383 @@
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
+        "label": "Image – texte alternatif"
       },
       {
         "component": "richtext",
         "name": "text",
-        "value": "",
-        "label": "Text",
+        "label": "Titre et description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "item-list-more",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Libellé du bouton",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "login-service",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Titre, bouton « Ouvrir une session » et liens",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "notification",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "info",
+            "value": "info"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Message",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "promo-banner",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variantes",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "image-right",
+            "value": "image-right"
+          },
+          {
+            "name": "narrow",
+            "value": "narrow"
+          },
+          {
+            "name": "pale-green",
+            "value": "pale-green"
+          },
+          {
+            "name": "stacked",
+            "value": "stacked"
+          },
+          {
+            "name": "title-tight",
+            "value": "title-tight"
+          },
+          {
+            "name": "white",
+            "value": "white"
+          },
+          {
+            "name": "wide",
+            "value": "wide"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktop",
+        "label": "Image de fond – bureau ≥1200px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_desktopAlt",
+        "label": "Image de fond – bureau ≥1200px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletLandscape",
+        "label": "Image de fond – tablette paysage ≥1024px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletLandscapeAlt",
+        "label": "Image de fond – tablette paysage ≥1024px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_tabletPortrait",
+        "label": "Image de fond – tablette portrait ≥768px",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_tabletPortraitAlt",
+        "label": "Image de fond – tablette portrait ≥768px (alt)"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobile",
+        "label": "Image de fond – mobile",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_mobileAlt",
+        "label": "Image de fond – mobile (alt)"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Contenu",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "rates-table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c3",
+        "label": "Colonne 3",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "simplified-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Illustration",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Illustration – texte alternatif"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Contenu",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "simplified-compare-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image – texte alternatif"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Titre, texte, liste et bouton",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-row-2",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-row-3",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c3",
+        "label": "Colonne 3",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-row-4",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c3",
+        "label": "Colonne 3",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c4",
+        "label": "Colonne 4",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-row-5",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c3",
+        "label": "Colonne 3",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c4",
+        "label": "Colonne 4",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c5",
+        "label": "Colonne 5",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-row-6",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "c1",
+        "label": "Colonne 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c2",
+        "label": "Colonne 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c3",
+        "label": "Colonne 3",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c4",
+        "label": "Colonne 4",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c5",
+        "label": "Colonne 5",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "c6",
+        "label": "Colonne 6",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Libellé (= métadonnée « Tab » des sections suivantes)",
         "valueType": "string"
       }
     ]

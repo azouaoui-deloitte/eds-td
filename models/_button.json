@@ -1,0 +1,63 @@
+{
+  "definitions": [
+    {
+      "title": "Bouton",
+      "id": "button",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/button/v1/button",
+            "template": {
+              "model": "button"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "button",
+      "fields": [
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Lien"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Texte"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkTitle",
+          "label": "Titre (infobulle)"
+        },
+        {
+          "component": "select",
+          "name": "linkType",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "lien (chevron vert)",
+              "value": ""
+            },
+            {
+              "name": "primaire (vert)",
+              "value": "primary"
+            },
+            {
+              "name": "secondaire (contour)",
+              "value": "secondary"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "definitions": [
+    {
+      "title": "Accordion",
+      "id": "accordion",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Accordion",
+              "filter": "accordion",
+              "model": "accordion"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Question",
+      "id": "accordion-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Question",
+              "model": "accordion-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "accordion",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Variantes",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "compact",
+              "value": "compact"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accordion-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "question",
+          "label": "Question",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "answer",
+          "label": "Réponse",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "accordion",
+      "components": [
+        "accordion-item"
+      ]
+    }
+  ]
+}

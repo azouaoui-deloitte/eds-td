@@ -1,0 +1,68 @@
+{
+  "definitions": [
+    {
+      "title": "Simplified Compare",
+      "id": "simplified-compare",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Simplified Compare",
+              "filter": "simplified-compare"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Produit",
+      "id": "simplified-compare-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Produit",
+              "model": "simplified-compare-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "simplified-compare-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image – texte alternatif"
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Titre, texte, liste et bouton",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "simplified-compare",
+      "components": [
+        "simplified-compare-item"
+      ]
+    }
+  ]
+}

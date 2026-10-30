@@ -1,0 +1,93 @@
+{
+  "definitions": [
+    {
+      "title": "Columns",
+      "id": "columns",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/columns/v1/columns",
+            "template": {
+              "columns": "2",
+              "rows": "1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Variantes",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "teaser",
+              "value": "teaser"
+            },
+            {
+              "name": "media",
+              "value": "media"
+            },
+            {
+              "name": "link-right",
+              "value": "link-right"
+            },
+            {
+              "name": "callout",
+              "value": "callout"
+            },
+            {
+              "name": "aside",
+              "value": "aside"
+            },
+            {
+              "name": "roomy",
+              "value": "roomy"
+            },
+            {
+              "name": "pad-mobile",
+              "value": "pad-mobile"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "",
+          "label": "Colonnes"
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "",
+          "label": "Lignes"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns",
+      "components": [
+        "column"
+      ]
+    },
+    {
+      "id": "column",
+      "components": [
+        "text",
+        "title",
+        "image",
+        "button"
+      ]
+    }
+  ]
+}

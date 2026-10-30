@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { getContentRoot } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 const SECTION_CLASSES = ['footer-quick', 'footer-contact', 'footer-columns', 'footer-legal', 'footer-social', 'footer-disclaimers'];
@@ -36,7 +37,7 @@ function buildColumns(section) {
 
 export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/ca/fr/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : `${getContentRoot()}/ca/fr/footer`;
   const fragment = await loadFragment(footerPath);
 
   block.textContent = '';

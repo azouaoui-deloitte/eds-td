@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { getContentRoot } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 const isDesktop = window.matchMedia('(min-width: 1024px)');
@@ -233,7 +234,7 @@ function buildSearchForm(search, cls) {
 
 export default async function decorate(block) {
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/ca/fr/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : `${getContentRoot()}/ca/fr/nav`;
   const fragment = await loadFragment(navPath);
   const nav = parseNav(fragment);
   const flyoutData = new Map();

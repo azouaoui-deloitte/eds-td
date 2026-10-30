@@ -7,6 +7,7 @@
 // eslint-disable-next-line import/no-cycle
 import {
   decorateMain,
+  moveInstrumentation,
 } from '../../scripts/scripts.js';
 
 import {
@@ -20,6 +21,9 @@ import {
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/') && !path.startsWith('//')) {
+    // AEM author (Universal Editor) links end with .html
+    // eslint-disable-next-line no-param-reassign
+    path = path.replace(/(\.plain)?\.html$/, '');
     const resp = await fetch(`${path}.plain.html`);
     if (resp.ok) {
       const main = document.createElement('main');
@@ -50,6 +54,8 @@ export default async function decorate(block) {
 
   const wrapper = block.closest('.fragment-wrapper');
   const section = wrapper.closest('.section');
+  const firstSection = fragment.querySelector(':scope > .section');
+  if (firstSection) moveInstrumentation(block, firstSection);
 
   if (section && section.children.length === 1) {
     // fragment is the ONLY child of its section; replace the whole section
