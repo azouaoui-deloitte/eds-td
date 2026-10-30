@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const VISIBLE_ITEMS = 3;
 
@@ -15,11 +16,13 @@ function isLabelRow(row) {
  */
 export default function decorate(block) {
   const rows = [...block.children];
-  const label = rows.length && isLabelRow(rows[rows.length - 1]) ? rows.pop().textContent.trim() : '';
+  const labelRow = rows.length && isLabelRow(rows[rows.length - 1]) ? rows.pop() : null;
+  const label = labelRow ? labelRow.textContent.trim() : '';
 
   const ul = document.createElement('ul');
   rows.forEach((row) => {
     const li = document.createElement('li');
+    moveInstrumentation(row, li);
     [...row.children].forEach((cell) => {
       const pic = cell.querySelector('picture');
       cell.className = pic && cell.textContent.trim() === '' ? 'item-list-image' : 'item-list-body';
@@ -31,6 +34,7 @@ export default function decorate(block) {
   ul.querySelectorAll('.item-list-image img').forEach((img) => {
     const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     const optimizedImg = optimized.querySelector('img');
+    moveInstrumentation(img, optimizedImg);
     if (img.getAttribute('width')) optimizedImg.width = img.getAttribute('width');
     if (img.getAttribute('height')) optimizedImg.height = img.getAttribute('height');
     img.closest('picture').replaceWith(optimized);
@@ -46,6 +50,7 @@ export default function decorate(block) {
 
   const more = document.createElement('div');
   more.className = 'item-list-more';
+  moveInstrumentation(labelRow, more);
   const button = document.createElement('button');
   button.type = 'button';
   button.setAttribute('aria-expanded', 'false');

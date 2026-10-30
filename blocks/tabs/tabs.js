@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 let tabsCount = 0;
 
 /**
@@ -31,6 +33,7 @@ export default function decorate(block) {
     const [labelCell, contentCell] = row.children;
     const label = labelCell ? labelCell.textContent.trim() : `${i + 1}`;
     const button = document.createElement('button');
+    moveInstrumentation(row, button);
     button.type = 'button';
     button.className = 'tabs-tab';
     button.id = `${id}-tab-${i}`;

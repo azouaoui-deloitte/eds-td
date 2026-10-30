@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 const DURATION = 700;
 let idCount = 0;
 
@@ -29,6 +31,7 @@ export default function decorate(block) {
 
     const item = document.createElement('div');
     item.className = 'accordion-item';
+    moveInstrumentation(row, item);
 
     const heading = document.createElement('h3');
     heading.className = 'accordion-header';
@@ -43,6 +46,7 @@ export default function decorate(block) {
     const title = document.createElement('span');
     title.className = 'accordion-title';
     if (questionCell) {
+      moveInstrumentation(questionCell, title);
       const single = questionCell.children.length === 1 && questionCell.firstElementChild;
       title.append(...(single && /^(P|H\d)$/.test(single.tagName) ? single : questionCell).childNodes);
     }
@@ -57,7 +61,10 @@ export default function decorate(block) {
     panel.hidden = true;
     const body = document.createElement('div');
     body.className = 'accordion-body';
-    if (answerCell) body.append(...answerCell.childNodes);
+    if (answerCell) {
+      moveInstrumentation(answerCell, body);
+      body.append(...answerCell.childNodes);
+    }
     panel.append(body);
 
     button.addEventListener('click', () => toggle(button, panel, button.getAttribute('aria-expanded') !== 'true'));

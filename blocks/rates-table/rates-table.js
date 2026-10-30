@@ -1,4 +1,5 @@
 import { loadFragment } from '../fragment/fragment.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
  * Closes the open tooltip popover, if any.
@@ -72,8 +73,10 @@ export default function decorate(block) {
   const tbody = document.createElement('tbody');
   [...block.children].forEach((row, r) => {
     const tr = document.createElement('tr');
+    moveInstrumentation(row, tr);
     [...row.children].forEach((cell, c) => {
       const el = document.createElement(r === 0 || c === 0 ? 'th' : 'td');
+      moveInstrumentation(cell, el);
       if (r === 0) el.scope = 'col';
       else if (c === 0) el.scope = 'row';
       el.append(...cell.childNodes);

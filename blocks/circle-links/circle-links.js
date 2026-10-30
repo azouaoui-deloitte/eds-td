@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 function arrow(direction, label) {
   const button = document.createElement('button');
   button.type = 'button';
@@ -43,6 +45,7 @@ export default function decorate(block) {
     const link = row.querySelector('a[href]');
     if (!icon && !link) return;
     const li = document.createElement('li');
+    moveInstrumentation(row, li);
     const a = document.createElement('a');
     a.className = 'circle-links-item';
     if (link) {

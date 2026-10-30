@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const PARTS = ['badge', 'title', 'image', 'features', 'actions'];
 
@@ -20,6 +21,7 @@ export default function decorate(block) {
   const settings = rows.filter((row) => !row.querySelector('h1, h2, h3, h4, h5, h6'));
   rows.filter((row) => !settings.includes(row)).forEach((row) => {
     const li = document.createElement('li');
+    moveInstrumentation(row, li);
     const parts = Object.fromEntries(PARTS.map((name) => [name, part(name)]));
     const elements = [...row.querySelectorAll(':scope > div > *')];
     const headingIndex = elements.findIndex((el) => /^H[1-6]$/.test(el.tagName));
@@ -41,6 +43,7 @@ export default function decorate(block) {
     parts.badge.querySelectorAll('p').forEach((p) => p.classList.add('compare-cards-ribbon'));
     parts.image.querySelectorAll('picture > img').forEach((img) => {
       const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '600' }]);
+      moveInstrumentation(img, optimized.querySelector('img'));
       img.closest('picture').replaceWith(optimized);
     });
     li.append(...PARTS.map((name) => parts[name]));

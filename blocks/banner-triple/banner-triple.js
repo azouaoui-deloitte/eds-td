@@ -1,4 +1,4 @@
-import { buildArtDirectedPicture } from '../../scripts/scripts.js';
+import { buildArtDirectedPicture, moveInstrumentation } from '../../scripts/scripts.js';
 
 const BREAKPOINTS = {
   4: [1200, 1024, 768],
@@ -50,13 +50,16 @@ export default function decorate(block) {
     const imgs = takeImages(imageCell);
 
     const slide = document.createElement('div');
+    moveInstrumentation(row, slide);
     slide.className = 'banner-triple-slide';
     slide.id = `${id}-panel-${i}`;
     slide.setAttribute('role', 'tabpanel');
     const media = document.createElement('div');
     media.className = 'banner-triple-media';
     if (imgs.length > 1) {
-      media.append(buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768], i === 0));
+      const picture = buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768], i === 0);
+      moveInstrumentation(imgs[0], picture.querySelector('img'));
+      media.append(picture);
     } else if (imgs.length === 1) {
       const picture = document.createElement('picture');
       picture.append(imgs[0]);
@@ -65,6 +68,7 @@ export default function decorate(block) {
     const content = document.createElement('div');
     content.className = 'banner-triple-content';
     const inner = document.createElement('div');
+    moveInstrumentation(contentCell, inner);
     inner.append(...contentCell.childNodes);
     content.append(inner);
     slide.append(media, content);

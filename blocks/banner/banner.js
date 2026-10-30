@@ -1,4 +1,4 @@
-import { buildArtDirectedPicture } from '../../scripts/scripts.js';
+import { buildArtDirectedPicture, moveInstrumentation } from '../../scripts/scripts.js';
 
 const BREAKPOINTS = {
   4: [1200, 1024, 768],
@@ -18,7 +18,9 @@ export default function decorate(block) {
   media.className = 'banner-media';
   const imgs = [...imageRow.querySelectorAll('img')];
   if (imgs.length > 1) {
-    media.append(buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768]));
+    const picture = buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768]);
+    moveInstrumentation(imgs[0], picture.querySelector('img'));
+    media.append(picture);
   } else if (imgs.length) {
     media.append(imgs[0].closest('picture'));
   }
@@ -26,6 +28,7 @@ export default function decorate(block) {
   const content = document.createElement('div');
   content.className = 'banner-content';
   const inner = document.createElement('div');
+  moveInstrumentation(contentRow.firstElementChild, inner);
   inner.append(...contentRow.firstElementChild.childNodes);
   content.append(inner);
 

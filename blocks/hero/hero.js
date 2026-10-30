@@ -1,4 +1,4 @@
-import { buildArtDirectedPicture } from '../../scripts/scripts.js';
+import { buildArtDirectedPicture, moveInstrumentation } from '../../scripts/scripts.js';
 
 const BREAKPOINTS = {
   4: [1200, 1024, 768],
@@ -18,7 +18,9 @@ export default function decorate(block) {
   background.className = 'hero-background';
   const imgs = imageRow ? [...imageRow.querySelectorAll('img')] : [];
   if (imgs.length > 1) {
-    background.append(buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768], true));
+    const picture = buildArtDirectedPicture(imgs, BREAKPOINTS[imgs.length] || [768], true);
+    moveInstrumentation(imgs[0], picture.querySelector('img'));
+    background.append(picture);
   } else if (imgs.length === 1) {
     const picture = imgs[0].closest('picture');
     picture.querySelector('img').loading = 'eager';
@@ -29,6 +31,7 @@ export default function decorate(block) {
   square.className = 'hero-square';
   if (headlineRow) {
     const cell = headlineRow.firstElementChild;
+    moveInstrumentation(cell, square);
     if (cell.querySelector('p')) {
       square.append(...cell.childNodes);
     } else {
@@ -40,7 +43,10 @@ export default function decorate(block) {
 
   const body = document.createElement('div');
   body.className = 'hero-body';
-  if (bodyRow) body.append(...bodyRow.firstElementChild.childNodes);
+  if (bodyRow) {
+    moveInstrumentation(bodyRow.firstElementChild, body);
+    body.append(...bodyRow.firstElementChild.childNodes);
+  }
 
   block.replaceChildren(background, square, body);
 }

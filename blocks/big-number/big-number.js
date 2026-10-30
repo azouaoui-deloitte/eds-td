@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 /**
  * Big number steps (TD "cmp-big-number"): each row is one step (heading + text),
  * numbered automatically with a large green figure.
@@ -7,6 +9,7 @@ export default function decorate(block) {
   const ol = document.createElement('ol');
   [...block.children].forEach((row, i) => {
     const li = document.createElement('li');
+    moveInstrumentation(row, li);
     const number = document.createElement('span');
     number.className = 'big-number-figure';
     number.setAttribute('aria-hidden', 'true');

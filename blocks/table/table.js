@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 /**
  * Table: renders the block rows/cells as an HTML table.
  * Merged cells are authored as empty cells: leading empty cells of a row extend the cell above
@@ -17,6 +19,7 @@ export default function decorate(block) {
 
   rows.forEach((cells, r) => {
     const tr = document.createElement('tr');
+    moveInstrumentation(block.children[r], tr);
     const header = r < headerCount;
     let left = null;
     let leading = true;
@@ -31,6 +34,7 @@ export default function decorate(block) {
       }
       leading = false;
       const td = document.createElement(header ? 'th' : 'td');
+      moveInstrumentation(cell, td);
       if (header) td.scope = 'col';
       td.append(...cell.childNodes);
       tr.append(td);

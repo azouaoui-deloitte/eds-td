@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
  * Simplified product comparison (TD cmp-simplified-compare-product).
@@ -11,6 +12,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
+    moveInstrumentation(row, li);
     const parts = {
       title: document.createElement('div'),
       image: document.createElement('div'),
@@ -29,6 +31,7 @@ export default function decorate(block) {
 
     parts.image.querySelectorAll('img').forEach((img) => {
       const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '400' }]);
+      moveInstrumentation(img, optimized.querySelector('img'));
       img.closest('picture').replaceWith(optimized);
     });
     const hr = document.createElement('hr');
