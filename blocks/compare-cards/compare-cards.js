@@ -31,7 +31,12 @@ export default function decorate(block) {
         parts.badge.append(el);
       } else if (i === headingIndex) {
         parts.title.append(el);
-      } else if ((el.matches('picture') || el.querySelector('picture')) && !el.textContent.trim()) {
+      } else if (el.matches('picture')) {
+        // AEM renders image fields as a bare picture, DA wraps it in a paragraph
+        const p = document.createElement('p');
+        p.append(el);
+        parts.image.append(p);
+      } else if (el.querySelector('picture') && !el.textContent.trim()) {
         parts.image.append(el);
       } else if (el.classList.contains('button-wrapper') || el.querySelector('a.link-action')) {
         parts.actions.append(el);
